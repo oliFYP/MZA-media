@@ -1,13 +1,15 @@
+import mzaLogo from "../logo/mza.svg";
+
 export function Hero() {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-visible">
       <div className="absolute inset-0 bg-black bg-cover bg-center">
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 to-[rgb(100,189,249)]/40"></div>
       </div>
 
-      <div className="absolute top-8 left-8 z-20 flex items-center gap-3">
+      <div className="absolute top-8 left-8  z-20 flex items-center gap-3">
         <img
-          src="/mza.svg"
+          src={mzaLogo}
           alt="Visitour Media Logo"
           className="object-contain"
           style={{ height: "100px", width: "auto" }}

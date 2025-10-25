@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import mzaLogo from "../logo/mza.svg";
 
 export function Footer() {
   return (
@@ -8,7 +9,7 @@ export function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <img
-                src="/mza.svg"
+                src={mzaLogo}
                 alt="MZA"
                 className="object-contain"
                 style={{ height: "100px", width: "auto" }}

@@ -1,4 +1,4 @@
-import { Clock } from "lucide-react";
+import { Zap } from "lucide-react";
 import mzaLogo from "../logo/logo.jpg";
 
 export function ImpactSection() {
@@ -8,31 +8,34 @@ export function ImpactSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              The Importance of Professional Real Estate Photography
+              Why Professional Media Marketing Matters
             </h2>
             <div className="flex items-start gap-4 mb-6">
-              <Clock
+              <Zap
                 className="w-12 h-12 flex-shrink-0 mt-1"
                 style={{ color: "rgb(100, 189, 249)" }}
               />
               <div>
                 <p className="text-xl text-gray-700 leading-relaxed mb-4">
-                  Did you know? An excellent real estate photo can hold a
-                  buyer's attention for{" "}
+                  In today's digital landscape, brands have{" "}
                   <span
                     className="font-bold"
                     style={{ color: "rgb(100, 189, 249)" }}
                   >
-                    20 seconds
+                    less than 3 seconds
+                  </span>{" "}
+                  to capture attention. Quality content is the difference
+                  between{" "}
+                  <span className="font-bold text-gray-900">
+                    being seen or being scrolled past
                   </span>
-                  , but without it, it's just{" "}
-                  <span className="font-bold text-gray-900">2 seconds</span>.
+                  .
                 </p>
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  That's why investing in professional photography is vital for
-                  agents looking to stand out. At Visitour, we're experts in
-                  creating captivating visuals to showcase your properties and
-                  attract more buyers.
+                  That's why investing in professional media and marketing is
+                  essential for businesses looking to grow. At Visitour Media,
+                  we create compelling content and strategic campaigns that
+                  drive real results and build lasting customer relationships.
                 </p>
               </div>
             </div>

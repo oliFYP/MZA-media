@@ -1,43 +1,58 @@
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Camera, Video, Plane, Palette, Globe, Layout } from 'lucide-react';
+import { useState } from "react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  TrendingUp,
+  Megaphone,
+  Palette,
+  Video,
+  Globe,
+  BarChart,
+} from "lucide-react";
 
 const services = [
   {
-    icon: Camera,
-    title: 'HDR Photography',
-    description: 'Experience the Impact of HDR Real Estate Photography. Enhance Your Listings with Striking, High-Quality Imagery.',
-    color: 'from-black to-gray-900'
+    icon: TrendingUp,
+    title: "Social Media Marketing",
+    description:
+      "Grow your brand presence across all major platforms. We create engaging content, manage campaigns, and build communities that convert followers into customers.",
+    color: "from-black to-gray-900",
   },
   {
-    icon: Globe,
-    title: '360° Virtual Tours',
-    description: 'Transform Property Showings with Dynamic 360° Virtual Tours. Showcase Listings Seamlessly, Empowering Real Estate Agents to Impress Clients with Every Click.',
-    color: 'from-[rgb(100,189,249)] to-blue-400'
+    icon: Megaphone,
+    title: "Digital Advertising",
+    description:
+      "Reach your target audience with precision-targeted ad campaigns. From Google Ads to social media advertising, we maximize your ROI with data-driven strategies.",
+    color: "from-[rgb(100,189,249)] to-blue-400",
   },
   {
     icon: Video,
-    title: 'Property Showcase Videos',
-    description: 'Unleash Cinematic Brilliance: Elevate Your Listings with Our Showcase Videos. Captivate Buyers with Stunning Visuals, Highlighting Every Detail.',
-    color: 'from-black to-gray-900'
-  },
-  {
-    icon: Plane,
-    title: 'Aerial Drone Media',
-    description: 'Elevate Your Listings with Aerial Drone Media. Showcase Properties from Unique Perspectives to Attract Buyers Faster.',
-    color: 'from-[rgb(100,189,249)] to-blue-400'
+    title: "Video Production",
+    description:
+      "Captivate your audience with professional video content. From brand stories to product showcases, we create videos that engage and inspire action.",
+    color: "from-black to-gray-900",
   },
   {
     icon: Palette,
-    title: 'Virtual Staging',
-    description: 'Transform Empty Spaces into Dream Homes with Our Virtual Staging Services. Enhance Property Appeal and Help Buyers Visualize the Potential of Every Room.',
-    color: 'from-black to-gray-900'
+    title: "Brand Strategy & Design",
+    description:
+      "Build a memorable brand identity that resonates with your audience. We craft cohesive visual identities and strategic messaging that sets you apart.",
+    color: "from-[rgb(100,189,249)] to-blue-400",
   },
   {
-    icon: Layout,
-    title: 'Single Property Websites',
-    description: 'Highlight Your Property with a Custom Single Property Website. Stand Out in the Market with a Dedicated Online Showcase Tailored to Your Listing.',
-    color: 'from-[rgb(100,189,249)] to-blue-400'
-  }
+    icon: Globe,
+    title: "Website Development",
+    description:
+      "Create stunning, high-converting websites that drive results. We design and develop custom sites optimized for user experience and search engines.",
+    color: "from-black to-gray-900",
+  },
+  {
+    icon: BarChart,
+    title: "Content Marketing",
+    description:
+      "Tell your story and establish authority in your industry. From blog posts to email campaigns, we create content that educates, engages, and converts.",
+    color: "from-[rgb(100,189,249)] to-blue-400",
+  },
 ];
 
 export function ServicesCarousel() {
@@ -63,7 +78,8 @@ export function ServicesCarousel() {
             Our Services
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive media solutions to showcase your properties at their absolute best
+            Comprehensive marketing services to grow your business and amplify
+            your brand
           </p>
         </div>
 
@@ -77,9 +93,14 @@ export function ServicesCarousel() {
                 const Icon = service.icon;
                 return (
                   <div key={index} className="w-full flex-shrink-0">
-                    <div className={`bg-gradient-to-br ${service.color} p-12 md:p-20 min-h-[500px] flex items-center justify-center`}>
+                    <div
+                      className={`bg-gradient-to-br ${service.color} p-12 md:p-20 min-h-[500px] flex items-center justify-center`}
+                    >
                       <div className="text-center text-white max-w-3xl">
-                        <Icon className="w-20 h-20 mx-auto mb-6" strokeWidth={1.5} />
+                        <Icon
+                          className="w-20 h-20 mx-auto mb-6"
+                          strokeWidth={1.5}
+                        />
                         <h3 className="text-3xl md:text-4xl font-bold mb-6">
                           {service.title}
                         </h3>
@@ -119,9 +140,13 @@ export function ServicesCarousel() {
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? 'w-12' : 'w-2 bg-gray-400'
+                  index === currentIndex ? "w-12" : "w-2 bg-gray-400"
                 }`}
-                style={index === currentIndex ? { backgroundColor: 'rgb(100, 189, 249)' } : {}}
+                style={
+                  index === currentIndex
+                    ? { backgroundColor: "rgb(100, 189, 249)" }
+                    : {}
+                }
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}

@@ -5,6 +5,7 @@ import { DiverseMedia } from "./components/DiverseMedia";
 import { Excellence } from "./components/Excellence";
 import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
+import { About } from "./components/About";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <DiverseMedia />
       <Excellence />
       <FAQ />
+      <About />
       <Footer />
     </div>
   );

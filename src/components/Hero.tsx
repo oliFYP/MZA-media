@@ -1,6 +1,15 @@
 import mzaLogo from "../logo/mza.svg";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export function Hero() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
   return (
     <section className="relative h-screen flex flex-col items-center justify-center overflow-visible">
       {/* Background */}
@@ -29,17 +38,27 @@ export function Hero() {
 
       {/* Text content */}
       <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto mt-48 sm:mt-0">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+        <h1
+          data-aos="zoom-out-down"
+          className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
+        >
           Amplify Your Brand
         </h1>
-        <p className="text-xl md:text-2xl mb-8 font-bold leading-relaxed max-w-3xl mx-auto">
+        <p
+          data-aos="zoom-out-down"
+          className="text-xl md:text-2xl mb-8 font-bold leading-relaxed max-w-3xl mx-auto"
+        >
           Full-Service Media & Marketing Solutions
         </p>
-        <p className="text-lg md:text-xl mb-12  text-gray-200 max-w-2xl mx-auto">
+        <p
+          data-aos="zoom-out-down"
+          className="text-lg md:text-xl mb-12  text-gray-200 max-w-2xl mx-auto"
+        >
           From Strategy to Execution - We Help Businesses Grow Through Powerful
           Content & Digital Marketing
         </p>
         <button
+          data-aos="zoom-out-down"
           className="px-8 py-4 rounded-xl text-lg font-bold hover:opacity-90 transition-all duration-300"
           style={{ backgroundColor: "rgb(100, 189, 249)", color: "black" }}
         >

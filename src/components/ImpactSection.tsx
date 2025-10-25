@@ -1,16 +1,28 @@
 import { Zap } from "lucide-react";
 import mzaLogo from "../logo/logo.jpg";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export function ImpactSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <h2
+              data-aos="flip-up"
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
               Why Professional Media Marketing Matters
             </h2>
-            <div className="flex items-start gap-4 mb-6">
+            <div data-aos="flip-up" className="flex items-start gap-4 mb-6">
               <Zap
                 className="w-12 h-12 flex-shrink-0 mt-1"
                 style={{ color: "rgb(100, 189, 249)" }}
@@ -43,20 +55,24 @@ export function ImpactSection() {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
               <div
+                data-aos="flip-up"
                 className="h-48 bg-cover bg-center rounded-lg shadow-lg"
                 style={{ backgroundImage: `url(${mzaLogo})` }}
               ></div>
               <div
+                data-aos="flip-up"
                 className="h-64 bg-cover bg-center rounded-lg shadow-lg"
                 style={{ backgroundImage: `url(${mzaLogo})` }}
               ></div>
             </div>
             <div className="space-y-4 pt-8">
               <div
+                data-aos="flip-up"
                 className="h-64 bg-cover bg-center rounded-lg shadow-lg"
                 style={{ backgroundImage: `url(${mzaLogo})` }}
               ></div>
               <div
+                data-aos="flip-up"
                 className="h-48 bg-cover bg-center rounded-lg shadow-lg"
                 style={{ backgroundImage: `url(${mzaLogo})` }}
               ></div>

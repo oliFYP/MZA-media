@@ -1,4 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import mzaLogo from "../logo/mza.svg";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 import {
   ChevronLeft,
   ChevronRight,
@@ -57,6 +61,12 @@ const services = [
 
 export function ServicesCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % services.length);
@@ -74,17 +84,26 @@ export function ServicesCarousel() {
     <section className="py-24 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2
+            data-aos="flip-up"
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          >
             Our Services
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p
+            data-aos="flip-up"
+            className="text-xl text-gray-600 max-w-3xl mx-auto"
+          >
             Comprehensive marketing services to grow your business and amplify
             your brand
           </p>
         </div>
 
         <div className="relative">
-          <div className="overflow-hidden rounded-2xl shadow-2xl">
+          <div
+            data-aos="flip-up"
+            className="overflow-hidden rounded-2xl shadow-2xl"
+          >
             <div
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}

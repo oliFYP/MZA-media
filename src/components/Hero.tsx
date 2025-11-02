@@ -51,9 +51,9 @@ export function Hero() {
           data-aos="zoom-out-down"
           className="text-lg md:text-xl mb-12 text-gray-200 max-w-2xl mx-auto"
         >
-          From Strategy to Execution — Focusing on personal branding to help
-          clients improve visibility online. Developing a deeper connection
-          between a personality and their clients.
+          Social media management business. Focusing on personal branding to
+          help clients improvise visibility online. Developing a deeper
+          connection between a personality and their clients
         </p>
         <button
           data-aos="zoom-out-down"

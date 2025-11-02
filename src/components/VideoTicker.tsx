@@ -1,50 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-import video1 from "../Video/video1.mp4";
-import video2 from "../Video/video2.mp4";
-import video3 from "../Video/video3.mp4";
-import video4 from "../Video/video4.mp4";
-
-// Optional poster images (small jpg/png) to show before video loads
-
-interface VideoItem {
-  src: string;
-  poster?: string;
-}
-
-const videos: VideoItem[] = [
-  { src: video1 },
-  { src: video2 },
-  { src: video3 },
-  { src: video4 },
+const reels = [
+  "DP8_X_QCqh0",
+  "DPO63Pnijst",
+  "DP2EVcliZXg",
+  "DPe4rbZCBYI",
+  "DOCPiz_lUVg",
 ];
 
 const VideoTicker: React.FC = () => {
+  const [loadedCount, setLoadedCount] = useState(0);
+  const total = reels.length * 10; // repeated 10x for infinite scroll
+
+  const handleLoad = () => {
+    setLoadedCount((prev) => prev + 1);
+  };
+
+  const allLoaded = loadedCount >= total;
+
   return (
-    <div className="overflow-hidden w-full bg-white py-4">
-      <div className="flex animate-marquee whitespace-nowrap">
-        {/* Repeat videos for smooth infinite scroll */}
-        {Array(20)
-          .fill(0)
-          .flatMap(() => videos)
-          .map((video, idx) => (
-            <div
-              key={idx}
-              className="flex flex-col items-center w-40 shrink-0 mx-2"
-            >
-              <video
-                src={video.src}
-                poster={video.poster}
-                muted
-                loop
-                playsInline
-                preload="metadata" // only load metadata initially
-                className="w-full aspect-[9/16] object-cover rounded-xl shadow-md hover:scale-105 transition-transform duration-300"
-                onMouseOver={(e) => e.currentTarget.play()} // play on hover
-                onMouseOut={(e) => e.currentTarget.pause()} // pause when hover ends
-              />
-            </div>
-          ))}
+    <div className="relative w-full">
+      {!allLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-white z-50">
+          <AiOutlineLoading3Quarters className="animate-spin text-blue text-5xl" />
+        </div>
+      )}
+
+      <div
+        className={`overflow-hidden w-full bg-white py-4 transition-opacity duration-500 ${
+          allLoaded ? "opacity-100" : "opacity-50"
+        }`}
+      >
+        <div className="flex animate-marquee whitespace-nowrap gap-4">
+          {Array(10)
+            .fill(0)
+            .flatMap(() => reels)
+            .map((id, idx) => (
+              <iframe
+                key={`${id}-${idx}`}
+                src={`https://www.instagram.com/reel/${id}/embed`}
+                width="250"
+                height="366"
+                frameBorder="0"
+                scrolling="no"
+                allowTransparency={true}
+                allow="encrypted-media"
+                className="rounded-xl shadow-md"
+                onLoad={handleLoad}
+              ></iframe>
+            ))}
+        </div>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import { FAQ } from "./components/FAQ";
 import { Footer } from "./components/Footer";
 import { About } from "./components/About";
 import { Navigation } from "./components/Navigation";
+import VideoTicker from "./components/VideoTicker";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Navigation />
       <div className="min-h-screen ">
         <Hero />
+        <VideoTicker />
         <Services />
         <ImpactSection />
         <DiverseMedia />

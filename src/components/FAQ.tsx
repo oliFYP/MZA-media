@@ -3,29 +3,30 @@ import { ChevronDown, HelpCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "What makes MZA Media different from other marketing agencies?",
+    question:
+      "What makes MZA Media different from other social media management agencies?",
     answer:
-      "We combine creative excellence with data-driven strategy. Our team doesn't just create beautiful content—we build campaigns that deliver measurable ROI. Plus, we include strategy consultation and performance analytics with every package.",
+      "We don’t just post content — we build meaningful digital communities. Our team combines strategy, creativity, and analytics to grow your audience, boost engagement, and strengthen your brand presence across all major platforms.",
   },
   {
-    question: "What's included in your marketing packages?",
+    question: "What's included in your social media management packages?",
     answer:
-      "Our packages are fully customizable based on your needs. Services include social media management, content creation, video production, digital advertising, website development, and brand strategy. Every package includes performance analytics and ongoing optimization.",
+      "Our packages are fully customizable and can include content creation, post scheduling, community management, paid social advertising, influencer collaborations, performance reporting, and strategic growth consultations. Each plan is tailored to your goals and brand identity.",
   },
   {
-    question: "How long does it take to see results?",
+    question: "How long does it take to see growth?",
     answer:
-      "While some tactics like paid advertising can show immediate results, building a strong brand presence typically takes 3-6 months. We focus on sustainable growth strategies that deliver long-term value, not just quick wins.",
+      "Social media growth depends on consistency and strategy. While some campaigns can gain traction within a few weeks, sustainable growth typically becomes visible within 2–4 months. We focus on long-term engagement and brand credibility rather than quick, short-term spikes.",
   },
   {
-    question: "What if I'm not satisfied with the results?",
+    question: "What if I’m not satisfied with the performance?",
     answer:
-      "Your satisfaction is our priority. We offer unlimited revisions on creative work and continuously optimize campaigns based on performance data. If something isn't working, we pivot quickly to find what does.",
+      "Your satisfaction matters most to us. We monitor analytics daily and adjust strategies to ensure your pages perform at their best. If something isn’t delivering results, we refine the approach — from content tone to posting schedules — until it aligns with your vision and KPIs.",
   },
   {
     question: "Do you work with businesses of all sizes?",
     answer:
-      "Yes! From startups to established enterprises, we tailor our services to fit your budget and goals. Whether you need a full marketing department or support in specific areas, we have solutions that scale with your business.",
+      "Yes! Whether you’re a small business looking to build your first audience or an established brand aiming to refine your digital presence, we tailor our services to match your goals, scale, and budget.",
   },
 ];
 
@@ -48,8 +49,8 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="text-xl text-gray-600">
-            Feeling inquisitive? Have a read through some of our FAQs or feel
-            free to contact us for more information!
+            Curious about our social media management services? Browse our FAQs
+            or reach out to learn how we can grow your brand online.
           </p>
         </div>
 

@@ -17,10 +17,10 @@ const teamMembers = [
     image: mzaLogo,
   },
   {
-    name: "Guillermo Pastora",
-    role: "Lead Photographer & Drone Pilot",
+    name: "Fraid Zada",
+    role: "Sales Lead",
     icon: Plane,
-    bio: "Yo, I'm Guillermo Pastora, a professional photographer and drone pilot. I am a self-taught photographer who's comfortable shooting all kinds of subjects. My lengthy career began underwater during my time as a scuba diver. Since then, I have expanded my horizons into landscape, portrait, and even automotive photography! My new obsession is aerial real estate content. My background as an airplane pilot shines through the quality of my work.",
+    bio: "Yo, I'm Fraid Zada, a professional photographer and drone pilot. I am a self-taught photographer who's comfortable shooting all kinds of subjects. My lengthy career began underwater during my time as a scuba diver. Since then, I have expanded my horizons into landscape, portrait, and even automotive photography! My new obsession is aerial real estate content. My background as an airplane pilot shines through the quality of my work.",
     image: mzaLogo,
   },
 ];

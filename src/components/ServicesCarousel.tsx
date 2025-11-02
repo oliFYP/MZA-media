@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import mzaLogo from "../logo/mza.svg";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -85,13 +85,13 @@ export function ServicesCarousel() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2
-            data-aos="flip-up"
+            data-aos="zoom-in"
             className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
           >
             Our Services
           </h2>
           <p
-            data-aos="flip-up"
+            data-aos="zoom-in"
             className="text-xl text-gray-600 max-w-3xl mx-auto"
           >
             Comprehensive marketing services to grow your business and amplify

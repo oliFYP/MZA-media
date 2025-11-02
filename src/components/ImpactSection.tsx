@@ -17,12 +17,12 @@ export function ImpactSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2
-              data-aos="flip-up"
+              data-aos="fade-right"
               className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
             >
               Why Professional Media Marketing Matters
             </h2>
-            <div data-aos="flip-up" className="flex items-start gap-4 mb-6">
+            <div data-aos="fade-right" className="flex items-start gap-4 mb-6">
               <Zap
                 className="w-12 h-12 flex-shrink-0 mt-1"
                 style={{ color: "rgb(100, 189, 249)" }}

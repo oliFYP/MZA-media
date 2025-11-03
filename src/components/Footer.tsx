@@ -3,8 +3,8 @@ import mzaLogo from "../logo/mza.svg";
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-16">
-      <div className="max-w-7xl mx-auto px-4">
+    <footer className="bg-black text-white bg-gradient-to-br from-black/50 to-[rgb(100,189,249)]/20 py-16">
+      <div className="max-w-7xl mx-auto  px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
@@ -15,7 +15,7 @@ export function Footer() {
                 style={{ height: "100px", width: "auto" }}
               />
             </div>
-            <p className="text-gray-400 leading-relaxed mb-6">
+            <p className="text-white leading-relaxed mb-6">
               Professional real estate photography and media solutions to
               elevate your listings and captivate buyers.
             </p>
@@ -23,7 +23,7 @@ export function Footer() {
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
-            <ul className="space-y-3 text-gray-400">
+            <ul className="space-y-3 text-white">
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
                 <span>514-980-1351 | 514-913-4817</span>

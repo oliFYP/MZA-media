@@ -43,7 +43,7 @@ const VideoTicker: React.FC = () => {
                 width="250"
                 height="366"
                 frameBorder="0"
-                scrolling="yes"
+                scrolling="no"
                 allowTransparency={true}
                 allow="encrypted-media"
                 className="rounded-xl shadow-md"

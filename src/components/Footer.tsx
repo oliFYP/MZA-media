@@ -22,30 +22,6 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li className="hover:text-white transition-colors cursor-pointer">
-                HDR Photography
-              </li>
-              <li className="hover:text-white transition-colors cursor-pointer">
-                360° Virtual Tours
-              </li>
-              <li className="hover:text-white transition-colors cursor-pointer">
-                Showcase Videos
-              </li>
-              <li className="hover:text-white transition-colors cursor-pointer">
-                Aerial Drone Media
-              </li>
-              <li className="hover:text-white transition-colors cursor-pointer">
-                Virtual Staging
-              </li>
-              <li className="hover:text-white transition-colors cursor-pointer">
-                Property Websites
-              </li>
-            </ul>
-          </div>
-
-          <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <ul className="space-y-3 text-gray-400">
               <li className="flex items-center gap-2">

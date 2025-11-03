@@ -22,13 +22,13 @@ const VideoTicker: React.FC = () => {
   return (
     <div className="relative w-full">
       {!allLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white z-50">
-          <AiOutlineLoading3Quarters className="animate-spin text-blue text-5xl" />
+        <div className="absolute inset-0 flex items-center justify-center bg-black z-50">
+          <AiOutlineLoading3Quarters className="animate-spin text-white text-5xl" />
         </div>
       )}
 
       <div
-        className={`overflow-hidden w-full bg-white py-4 transition-opacity duration-500 ${
+        className={`overflow-hidden w-full bg-black py-4 transition-opacity duration-500 ${
           allLoaded ? "opacity-100" : "opacity-50"
         }`}
       >
@@ -43,7 +43,7 @@ const VideoTicker: React.FC = () => {
                 width="250"
                 height="366"
                 frameBorder="0"
-                scrolling="no"
+                scrolling="yes"
                 allowTransparency={true}
                 allow="encrypted-media"
                 className="rounded-xl shadow-md"

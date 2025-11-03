@@ -33,49 +33,55 @@ const workflow = [
 
 export function Services() {
   return (
-    <section
-      id="services"
-      className="py-24 bg-gradient-to-br from-gray-50 to-gray-100"
-    >
+    <section id="services" className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Digital Management Process
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
             We manage every aspect of your digital presence. From scripting to
             publishing and everything in between, we handle the complete
             lifecycle of your content and online identity.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-8 mb-16">
+        {/* Equal-height cards with 3D borders */}
+        <div className="grid md:grid-cols-4 gap-8 mb-16 items-stretch">
           {workflow.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div key={index} className="relative">
+              <div key={index} className="relative flex flex-col h-full">
                 <div
-                  className="bg-white rounded-xl p-8 shadow-lg border-t-4"
-                  style={{ borderTopColor: "rgb(100, 189, 249)" }}
+                  className="flex flex-col h-full justify-between bg-gradient-to-br from-black/25 to-[rgb(100,189,249)]/35 
+                  rounded-3xl p-8 shadow-lg border-t-4 border-r-4 border-transparent transition-transform duration-300 hover:-translate-y-2"
+                  style={{
+                    borderTopColor: "rgb(100, 189, 249)",
+                    borderRightColor: "rgba(100, 189, 249, 0.7)",
+                  }}
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <Icon
-                      className="w-12 h-12"
-                      style={{ color: "rgb(100, 189, 249)" }}
-                      strokeWidth={1.5}
-                    />
-                    <span className="text-4xl font-bold text-gray-200">
-                      {service.step}
-                    </span>
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <Icon
+                        className="w-12 h-12"
+                        style={{ color: "rgb(100, 189, 249)" }}
+                        strokeWidth={1.5}
+                      />
+                      <span className="text-4xl font-bold text-gray-200">
+                        {service.step}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/90 leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {service.description}
-                  </p>
                 </div>
 
+                {/* Arrow connector */}
                 {index < workflow.length - 1 && (
                   <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 z-10">
                     <div
@@ -91,9 +97,10 @@ export function Services() {
           })}
         </div>
 
+        {/* CTA */}
         <div className="text-center">
           <button
-            className="px-10 py-4 rounded-sm text-lg font-medium hover:opacity-90 transition-all duration-300"
+            className="px-10 py-4 rounded-xl text-lg font-bold hover:opacity-90 transition-all duration-300"
             style={{ backgroundColor: "rgb(100, 189, 249)", color: "black" }}
           >
             Get Started

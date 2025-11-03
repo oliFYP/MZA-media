@@ -12,13 +12,13 @@ export function ImpactSection() {
     });
   }, []);
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-black">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <h2
               data-aos="fade-right"
-              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+              className="text-4xl md:text-5xl font-bold text-white mb-6"
             >
               Why Professional Media Managment Matters
             </h2>
@@ -28,7 +28,7 @@ export function ImpactSection() {
                 style={{ color: "rgb(100, 189, 249)" }}
               />
               <div>
-                <p className="text-xl text-gray-700 leading-relaxed mb-4">
+                <p className="text-xl text-white leading-relaxed mb-4">
                   In today's fast-paced digital world, you have{" "}
                   <span
                     className="font-bold"
@@ -38,12 +38,12 @@ export function ImpactSection() {
                   </span>{" "}
                   to make an impression. Effective social media is the
                   difference between{" "}
-                  <span className="font-bold text-gray-900">
+                  <span className="font-bold text-white">
                     being noticed or being ignored
                   </span>
                   .
                 </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <p className="text-lg text-white leading-relaxed">
                   That’s why investing in professional social media management
                   is key for brands that want to grow. At Visitour Media, we
                   craft engaging content, manage your platforms strategically,
@@ -57,25 +57,41 @@ export function ImpactSection() {
             <div className="space-y-4">
               <div
                 data-aos="flip-up"
-                className="h-48 bg-cover bg-center rounded-lg shadow-lg"
-                style={{ backgroundImage: `url(${mzaLogo})` }}
+                className="h-48  border-t-4 border-r-4 bg-cover bg-center rounded-lg shadow-lg"
+                style={{
+                  backgroundImage: `url(${mzaLogo})`,
+                  borderTopColor: "rgb(100, 189, 249)",
+                  borderRightColor: "rgba(100, 189, 249, 0.7)",
+                }}
               ></div>
               <div
                 data-aos="flip-up"
-                className="h-64 bg-cover bg-center rounded-lg shadow-lg"
-                style={{ backgroundImage: `url(${mzaLogo})` }}
+                className="h-64 border-t-4 border-r-4 bg-cover bg-center rounded-lg shadow-lg"
+                style={{
+                  backgroundImage: `url(${mzaLogo})`,
+                  borderTopColor: "rgb(100, 189, 249)",
+                  borderRightColor: "rgba(100, 189, 249, 0.7)",
+                }}
               ></div>
             </div>
             <div className="space-y-4 pt-8">
               <div
                 data-aos="flip-up"
-                className="h-64 bg-cover bg-center rounded-lg shadow-lg"
-                style={{ backgroundImage: `url(${mzaLogo})` }}
+                className="h-64 border-t-4 border-r-4 bg-cover bg-center rounded-lg shadow-lg"
+                style={{
+                  backgroundImage: `url(${mzaLogo})`,
+                  borderTopColor: "rgb(100, 189, 249)",
+                  borderRightColor: "rgba(100, 189, 249, 0.7)",
+                }}
               ></div>
               <div
                 data-aos="flip-up"
-                className="h-48 bg-cover bg-center rounded-lg shadow-lg"
-                style={{ backgroundImage: `url(${mzaLogo})` }}
+                className="h-48 border-t-4 border-r-4 bg-cover bg-center rounded-lg shadow-lg"
+                style={{
+                  backgroundImage: `url(${mzaLogo})`,
+                  borderTopColor: "rgb(100, 189, 249)",
+                  borderRightColor: "rgba(100, 189, 249, 0.7)",
+                }}
               ></div>
             </div>
           </div>

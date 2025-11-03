@@ -1,8 +1,20 @@
-import mzaLogoB from "../logo/mzaB.svg";
+import { useEffect } from "react";
+import mzaLogoB from "../logo/mza.svg";
 
 export function Navigation() {
+  useEffect(() => {
+    // trigger fade animation when mounted
+    const nav = document.getElementById("main-nav");
+    if (nav) {
+      nav.classList.add("fade-in-down");
+    }
+  }, []);
+
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 shadow-sm">
+    <nav
+      id="main-nav"
+      className="fixed top-0 w-full bg-gradient-to-b from-black/90 to-transparent backdrop-blur-md z-50 shadow-sm opacity-0 translate-y-[-20px]"
+    >
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center gap-3">
@@ -15,42 +27,20 @@ export function Navigation() {
           </div>
 
           <ul className="hidden md:flex items-center gap-8">
-            <li>
-              <a
-                href="#home"
-                className="text-gray-700 hover:text-gray-900 font-bold transition-colors"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#services"
-                className="text-gray-700 hover:text-gray-900 font-bold transition-colors"
-              >
-                Services
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className="text-gray-700 hover:text-gray-900 font-bold transition-colors"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                className="text-gray-700 hover:text-gray-900 font-bold transition-colors"
-              >
-                Contact Us
-              </a>
-            </li>
+            {["Home", "Services", "About", "Contact Us"].map((text, i) => (
+              <li key={i}>
+                <a
+                  href={`#${text.toLowerCase().replace(" ", "")}`}
+                  className="text-white hover:text-[rgb(100,189,249)] font-bold transition-colors"
+                >
+                  {text}
+                </a>
+              </li>
+            ))}
           </ul>
 
           <button className="md:hidden" aria-label="Toggle menu">
-            <span className="text-2xl text-gray-900">☰</span>
+            <span className="text-2xl text-white">☰</span>
           </button>
         </div>
       </div>

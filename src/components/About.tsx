@@ -27,13 +27,11 @@ const teamMembers = [
 
 export function About() {
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-24 bg-black relative text-white">
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Meet The Team
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Meet The Team</h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             The creative minds behind Visitour Media. We're passionate about
             helping businesses grow through innovative media and marketing
             solutions.
@@ -52,35 +50,41 @@ export function About() {
                   isEven ? "md:flex-row" : "md:flex-row-reverse"
                 } gap-12 items-center`}
               >
+                {/* Image Card */}
                 <div className="w-full md:w-1/2">
                   <div
-                    className="relative h-96 bg-cover bg-center rounded-2xl shadow-2xl overflow-hidden group"
-                    style={{ backgroundImage: `url(${member.image})` }}
+                    className="relative rounded-2xl border-2 overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgb(100,189,249)]"
+                    style={{
+                      borderColor: "rgb(100,189,249)",
+                      boxShadow: "0 0 40px rgba(100,189,249,0.3)",
+                      backgroundImage: `url(${member.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                      height: "24rem",
+                      animationDelay: `${index * 200}ms`,
+                    }}
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 </div>
 
+                {/* Text Content */}
                 <div className="w-full md:w-1/2">
                   <div className="flex items-center gap-3 mb-4">
                     <Icon
-                      className="w-10 h-10"
-                      style={{ color: "rgb(100, 189, 249)" }}
+                      className="w-10 h-10 text-[rgb(100,189,249)]"
                       strokeWidth={1.5}
                     />
                     <div>
-                      <h3 className="text-3xl font-bold text-gray-900">
+                      <h3 className="text-3xl font-bold text-white">
                         {member.name}
                       </h3>
-                      <p
-                        className="text-lg font-medium"
-                        style={{ color: "rgb(100, 189, 249)" }}
-                      >
+                      <p className="text-lg font-medium text-[rgb(100,189,249)]">
                         {member.role}
                       </p>
                     </div>
                   </div>
-                  <p className="text-lg text-gray-700 leading-relaxed">
+                  <p className="text-lg text-gray-200 leading-relaxed">
                     {member.bio}
                   </p>
                 </div>
@@ -89,19 +93,17 @@ export function About() {
           })}
         </div>
 
+        {/* CTA */}
         <div className="mt-24 text-center">
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-12 rounded-2xl max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+          <div className="rounded-2xl p-12 max-w-4xl mx-auto bg-black border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)]">
+            <h3 className="text-3xl font-bold text-white mb-4">
               Ready to Work Together?
             </h3>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-300 mb-8">
               Let's discuss how we can help elevate your brand and drive real
               results for your business.
             </p>
-            <button
-              className="px-10 py-4 rounded-sm text-lg font-medium hover:opacity-90 transition-all duration-300"
-              style={{ backgroundColor: "rgb(100, 189, 249)", color: "black" }}
-            >
+            <button className="px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 bg-[rgb(100,189,249)] text-black hover:opacity-90">
               Get In Touch
             </button>
           </div>

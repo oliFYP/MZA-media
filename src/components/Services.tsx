@@ -33,76 +33,68 @@ const workflow = [
 
 export function Services() {
   return (
-    <section id="services" className="py-24 bg-black">
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="services" className="py-24 bg-black relative text-white">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[rgb(100,189,249)]/10 to-black"></div>
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Digital Management Process
           </h2>
-          <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We manage every aspect of your digital presence. From scripting to
             publishing and everything in between, we handle the complete
             lifecycle of your content and online identity.
           </p>
         </div>
 
-        {/* Equal-height cards with 3D borders */}
-        <div className="grid md:grid-cols-4 gap-8 mb-16 items-stretch">
+        {/* Workflow Grid */}
+        <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {workflow.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div key={index} className="relative flex flex-col h-full">
-                <div
-                  className="flex flex-col h-full justify-between bg-gradient-to-br from-black/25 to-[rgb(100,189,249)]/35 
-                  rounded-3xl p-8 shadow-lg border-t-4 border-r-4 border-transparent transition-transform duration-300 hover:-translate-y-2"
-                  style={{
-                    borderTopColor: "rgb(100, 189, 249)",
-                    borderRightColor: "rgba(100, 189, 249, 0.7)",
-                  }}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <Icon
-                        className="w-12 h-12"
-                        style={{ color: "rgb(100, 189, 249)" }}
-                        strokeWidth={1.5}
-                      />
-                      <span className="text-4xl font-bold text-gray-200">
-                        {service.step}
-                      </span>
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-white/90 leading-relaxed">
-                      {service.description}
-                    </p>
+              <div
+                key={index}
+                className="relative rounded-2xl border-2 p-8 flex flex-col justify-between transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                style={{
+                  borderColor: "rgb(100,189,249)",
+                  boxShadow: "0 0 40px rgba(100,189,249,0.3)",
+                  animationDelay: `${index * 200}ms`,
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 0 50px rgb(100,189,249)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.boxShadow =
+                    "0 0 40px rgba(100,189,249,0.3)")
+                }
+              >
+                <div className="mb-6">
+                  <div className="flex items-center justify-between mb-6">
+                    <Icon
+                      className="w-12 h-12 text-[rgb(100,189,249)]"
+                      strokeWidth={1.5}
+                    />
+                    <span className="text-4xl font-bold text-gray-200">
+                      {service.step}
+                    </span>
                   </div>
+                  <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-gray-200/90 leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
-
-                {/* Arrow connector */}
-                {index < workflow.length - 1 && (
-                  <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2 z-10">
-                    <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold"
-                      style={{ backgroundColor: "rgb(100, 189, 249)" }}
-                    >
-                      →
-                    </div>
-                  </div>
-                )}
               </div>
             );
           })}
         </div>
 
         {/* CTA */}
-        <div className="text-center">
-          <button
-            className="px-10 py-4 rounded-xl text-lg font-bold hover:opacity-90 transition-all duration-300"
-            style={{ backgroundColor: "rgb(100, 189, 249)", color: "black" }}
-          >
+        <div className="text-center mt-12">
+          <button className="px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 bg-[rgb(100,189,249)] text-black hover:opacity-90">
             Get Started
           </button>
         </div>

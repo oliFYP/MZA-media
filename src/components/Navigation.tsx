@@ -3,7 +3,6 @@ import mzaLogoB from "../logo/mza.svg";
 
 export function Navigation() {
   useEffect(() => {
-    // trigger fade animation when mounted
     const nav = document.getElementById("main-nav");
     if (nav) {
       nav.classList.add("fade-in-down");

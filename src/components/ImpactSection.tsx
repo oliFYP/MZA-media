@@ -16,7 +16,6 @@ export function ImpactSection() {
     <section className="py-24 bg-black relative text-white">
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
           <div>
             <h2
               data-aos="fade-right"
@@ -53,7 +52,6 @@ export function ImpactSection() {
             </div>
           </div>
 
-          {/* Image Grid */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4">
               {[48, 64].map((h, idx) => (

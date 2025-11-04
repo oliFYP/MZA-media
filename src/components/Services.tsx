@@ -34,11 +34,9 @@ const workflow = [
 export function Services() {
   return (
     <section id="services" className="py-24 bg-black relative text-white">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[rgb(100,189,249)]/10 to-black"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Digital Management Process
@@ -50,7 +48,6 @@ export function Services() {
           </p>
         </div>
 
-        {/* Workflow Grid */}
         <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {workflow.map((service, index) => {
             const Icon = service.icon;

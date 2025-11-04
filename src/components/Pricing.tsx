@@ -50,11 +50,9 @@ export function Pricing() {
 
   return (
     <section id="services" className="py-24 bg-black relative text-white">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-[rgb(100,189,249)]/10 to-black"></div>
 
       <div className="relative z-10 container mx-auto px-6">
-        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Choose Your Growth Path
@@ -67,7 +65,6 @@ export function Pricing() {
           </p>
         </div>
 
-        {/* Pricing Grid */}
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {pricingTiers.map((tier, index) => (
             <div
@@ -79,14 +76,12 @@ export function Pricing() {
               }`}
               style={{ animationDelay: `${index * 200}ms` }}
             >
-              {/* Badge */}
               {tier.popular && (
                 <div className="absolute top-0 right-0 bg-gradient-to-r from-[rgb(100,189,249)] to-blue-400 text-black font-semibold px-3 py-1 rounded-bl-lg rounded-tr-lg text-sm">
                   Most Popular
                 </div>
               )}
 
-              {/* Header */}
               <div className="mb-6">
                 <h3 className="text-2xl font-bold">{tier.name}</h3>
                 <p className="text-base text-gray-400">{tier.description}</p>
@@ -98,7 +93,6 @@ export function Pricing() {
                 </div>
               </div>
 
-              {/* Features */}
               <ul className="space-y-3 flex-1 mb-8">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
@@ -107,8 +101,6 @@ export function Pricing() {
                   </li>
                 ))}
               </ul>
-
-              {/* Button */}
               <button
                 onClick={scrollToContact}
                 className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 ${

@@ -43,7 +43,11 @@ const IPhoneReelsCarousel: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center w-full h-screen bg-black">
-      <div className="relative bg-black rounded-[3rem] border-[6px] border-gray-700 shadow-2xl w-[380px] h-[780px] overflow-hidden">
+      <div
+        className="relative bg-black rounded-[3rem] border-[6px] border-gray-700 
+               shadow-[0_0_40px_10px_rgba(59,130,246,0.5)] 
+               w-[380px] h-[780px] overflow-hidden"
+      >
         <div className="relative top-0 left-0 w-full bg-white z-50 py-2 px-6 flex justify-between items-center text-white text-sm">
           <span className="font-medium text-black">9:41</span>
           <div className="flex items-center text-black space-x-1 opacity-90">

@@ -2,10 +2,11 @@ import IPhoneReelsCarousel from "./IPhoneReelsCarousel";
 
 export function Projects() {
   return (
-    <section className="py-24 bg-black text-white">
-      <div className="grid md:grid-cols-2 gap-12 items-center text-center md:text-left px-4 sm:px-8">
+    <section className="py-24 bg-black text-white overflow-x-hidden">
+      <div className="grid md:grid-cols-2 gap-12 items-center text-center md:text-left px-4 sm:px-6 md:px-8 max-w-7xl mx-auto">
+        {/* TEXT BLOCK */}
         <div className="mx-auto md:mx-0 max-w-xl">
-          <h3 className="text-3xl md:text-4xl font-bold mb-6">
+          <h3 className="text-3xl md:text-4xl font-bold mb-6 break-words">
             <span className="text-white">Building </span>
             <span className="text-[rgb(100,189,249)]">Authentic </span>
             <span className="text-white">Digital Presence</span>
@@ -24,8 +25,9 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="flex justify-center">
-          <div className="scale-90 sm:scale-100">
+        {/* CAROUSEL BLOCK */}
+        <div className="flex justify-center w-full overflow-hidden">
+          <div className="scale-95 sm:scale-100 max-w-full">
             <IPhoneReelsCarousel />
           </div>
         </div>

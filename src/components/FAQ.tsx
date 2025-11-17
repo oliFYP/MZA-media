@@ -38,13 +38,42 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-24 bg-black relative text-white">
+    <section className="py-24 bg-black relative text-white overflow-hidden">
+      {/* 🌌 ANIMATED PARTICLES BACKGROUND (same as About section) */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute w-full h-full bg-gradient-to-b from-black/90 to-black/70"></div>
+
+        {[...Array(30)].map((_, idx) => (
+          <div
+            key={idx}
+            className="absolute w-2 h-2 bg-[rgb(100,189,249)] rounded-full opacity-50 animate-pulse-slow"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          ></div>
+        ))}
+
+        <style>{`
+          @keyframes pulseSlow {
+            0%, 100% { transform: scale(0.5); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+          }
+          .animate-pulse-slow {
+            animation: pulseSlow 6s infinite ease-in-out;
+          }
+        `}</style>
+      </div>
+
+      {/* CONTENT */}
       <div className="relative z-10 max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
           <HelpCircle className="w-16 h-16 mx-auto mb-6 text-[rgb(100,189,249)]" />
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Frequently Asked Questions
+            Frequently Asked{" "}
+            <span className="text-[rgb(100,189,249)]">Questions</span>
           </h2>
           <p className="text-xl text-gray-200">
             Curious about our social media management services? Browse our FAQs
@@ -58,8 +87,8 @@ export function FAQ() {
             <div
               key={index}
               onClick={() => toggleFAQ(index)}
-              className={`relative bg-black rounded-2xl border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)] 
-              transition-all duration-300 hover:shadow-[0_0_60px_rgba(100,189,249,0.6)]`}
+              className="relative bg-black rounded-2xl border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)] 
+              transition-all duration-300 hover:shadow-[0_0_60px_rgba(100,189,249,0.6)]"
             >
               <button className="w-full px-6 py-5 flex items-center justify-between text-left rounded-2xl bg-black">
                 <span className="text-lg font-semibold text-white pr-4">
@@ -67,7 +96,7 @@ export function FAQ() {
                 </span>
                 <ChevronDown
                   className={`w-6 h-6 text-gray-400 flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "transform rotate-180" : ""
+                    openIndex === index ? "rotate-180" : ""
                   }`}
                 />
               </button>

@@ -49,13 +49,54 @@ export function Pricing() {
   };
 
   return (
-    <section id="services" className="py-24 bg-black relative text-white">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-[rgb(100,189,249)]/10 to-black"></div>
+    <section
+      id="services"
+      className="py-24 bg-black relative text-white overflow-hidden"
+    >
+      {/* 💎 SUBTLE FLOATING SHAPES - BLENDED */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute w-full h-full bg-gradient-to-b from-black/95 to-black/80"></div>
+
+        {/* Floating shapes - subtle like projects section */}
+        {[...Array(6)].map((_, idx) => (
+          <div
+            key={idx}
+            className="absolute border border-[rgb(100,189,249)] opacity-10 animate-float-gentle"
+            style={{
+              width: `${80 + Math.random() * 100}px`,
+              height: `${80 + Math.random() * 100}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${20 + Math.random() * 10}s`,
+              borderRadius:
+                idx % 3 === 0 ? "50%" : idx % 3 === 1 ? "20%" : "10%",
+            }}
+          ></div>
+        ))}
+
+        <style>{`
+          @keyframes float-gentle {
+            0%, 100% { 
+              transform: translateY(0) rotate(0deg) scale(1);
+              opacity: 0.1;
+            }
+            50% { 
+              transform: translateY(-20px) rotate(90deg) scale(1.1);
+              opacity: 0.15;
+            }
+          }
+          .animate-float-gentle {
+            animation: float-gentle 25s ease-in-out infinite;
+          }
+        `}</style>
+      </div>
 
       <div className="relative z-10 container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Choose Your Growth Path
+            Choose Your{" "}
+            <span className="text-[rgb(100,189,249)]">Growth Path</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Tailored packages designed to elevate your brand at every stage
@@ -69,7 +110,7 @@ export function Pricing() {
           {pricingTiers.map((tier, index) => (
             <div
               key={tier.name}
-              className={`relative rounded-2xl border-2 p-8 flex flex-col justify-between transition-all duration-300 hover:scale-105 hover:shadow-2xl ${
+              className={`relative rounded-2xl border-2 p-8 flex flex-col justify-between transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-black/50 backdrop-blur-sm ${
                 tier.popular
                   ? "border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)]"
                   : "border-gray-700"

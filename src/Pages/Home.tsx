@@ -8,6 +8,7 @@ import { Footer } from "../components/Footer";
 import { About } from "../components/About";
 import { Navigation } from "../components/Navigation";
 import { Projects } from "../components/Projects";
+import { Contact } from "../components/Contact";
 
 export function Home() {
   return (
@@ -19,9 +20,9 @@ export function Home() {
         <Projects />
         <Pricing />
         <ImpactSection />
-
         <FAQ />
         <About />
+        <Contact />
         <Footer />
       </div>
     </div>

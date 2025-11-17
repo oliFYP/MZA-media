@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { Wifi, BatteryFull, Signal } from "lucide-react";
+import {
+  Wifi,
+  BatteryFull,
+  Signal,
+  ChevronUp,
+  ChevronDown,
+} from "lucide-react";
 
 const reels = [
   "DP8_X_QCqh0",
@@ -19,26 +25,33 @@ const IPhoneReelsCarousel: React.FC = () => {
   const handleLoad = () => setLoadedCount((prev) => prev + 1);
   const allLoaded = loadedCount >= total;
 
-  const handleWheel = (e: WheelEvent) => {
-    if (e.deltaY > 0)
-      setCurrentIndex((prev) => Math.min(prev + 1, reels.length - 1));
-    else if (e.deltaY < 0) setCurrentIndex((prev) => Math.max(prev - 1, 0));
-  };
-
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    el.addEventListener("wheel", handleWheel);
-    return () => el.removeEventListener("wheel", handleWheel);
-  }, []);
-
-  useEffect(() => {
+  const scrollToIndex = (index: number) => {
     if (containerRef.current) {
       containerRef.current.scrollTo({
-        top: currentIndex * containerRef.current.clientHeight,
+        top: index * containerRef.current.clientHeight,
         behavior: "smooth",
       });
     }
+  };
+
+  const nextReel = () => {
+    setCurrentIndex((prev) => {
+      const newIndex = Math.min(prev + 1, reels.length - 1);
+      scrollToIndex(newIndex);
+      return newIndex;
+    });
+  };
+
+  const prevReel = () => {
+    setCurrentIndex((prev) => {
+      const newIndex = Math.max(prev - 1, 0);
+      scrollToIndex(newIndex);
+      return newIndex;
+    });
+  };
+
+  useEffect(() => {
+    scrollToIndex(currentIndex);
   }, [currentIndex]);
 
   return (
@@ -49,6 +62,7 @@ const IPhoneReelsCarousel: React.FC = () => {
                w-[380px] h-[780px] max-w-[90vw] aspect-[380/780]
                overflow-hidden scale-90 sm:scale-100"
       >
+        {/* Top Status Bar */}
         <div className="relative top-0 left-0 w-full bg-white z-50 py-2 px-6 flex justify-between items-center text-white text-sm">
           <span className="font-medium text-black">9:41</span>
           <div className="flex items-center text-black space-x-1 opacity-90">
@@ -58,12 +72,13 @@ const IPhoneReelsCarousel: React.FC = () => {
           </div>
         </div>
 
+        {/* iPhone Notch & Side Buttons */}
         <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-full z-50 border border-gray-800 shadow-inner"></div>
-
         <div className="absolute right-[-6px] top-[180px] w-[3px] h-[60px] bg-gray-700 rounded-full"></div>
         <div className="absolute left-[-6px] top-[150px] w-[3px] h-[40px] bg-gray-700 rounded-full"></div>
         <div className="absolute left-[-6px] top-[210px] w-[3px] h-[40px] bg-gray-700 rounded-full"></div>
 
+        {/* Reels Container */}
         <div
           ref={containerRef}
           className="relative w-full h-full overflow-hidden scroll-smooth snap-y snap-mandatory"
@@ -96,6 +111,33 @@ const IPhoneReelsCarousel: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Navigation Buttons */}
+        <button
+          onClick={prevReel}
+          disabled={currentIndex === 0}
+          className={`absolute top-8 left-1/2 -translate-x-1/2 z-50 
+            p-2 bg-black/60 rounded-full border border-white/20 
+            hover:bg-white/10 transition ${
+              currentIndex === 0 ? "opacity-30 cursor-not-allowed" : ""
+            }`}
+        >
+          <ChevronUp className="text-white" size={24} />
+        </button>
+
+        <button
+          onClick={nextReel}
+          disabled={currentIndex === reels.length - 1}
+          className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-50 
+            p-2 bg-black/60 rounded-full border border-white/20 
+            hover:bg-white/10 transition ${
+              currentIndex === reels.length - 1
+                ? "opacity-30 cursor-not-allowed"
+                : ""
+            }`}
+        >
+          <ChevronDown className="text-white" size={24} />
+        </button>
       </div>
     </div>
   );

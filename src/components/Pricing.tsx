@@ -125,7 +125,7 @@ export function Pricing() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {pricingTiers.map((tier, index) => (
+          {pricingTiers.map((tier) => (
             <div
               key={tier.name}
               className={`relative rounded-2xl border-2 p-8 flex flex-col justify-between transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-black/50 backdrop-blur-sm ${
@@ -134,7 +134,6 @@ export function Pricing() {
                   : "border-gray-700"
               }`}
               data-aos="fade-up"
-              data-aos-delay={`${600 + index * 200}`}
             >
               {tier.popular && (
                 <div className="absolute top-0 right-0 bg-gradient-to-r from-[rgb(100,189,249)] to-blue-400 text-black font-semibold px-3 py-1 rounded-bl-lg rounded-tr-lg text-sm">

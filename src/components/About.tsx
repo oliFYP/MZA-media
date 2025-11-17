@@ -104,7 +104,6 @@ export function About() {
                   isEven ? "md:flex-row" : "md:flex-row-reverse"
                 } gap-12 items-center`}
                 data-aos="fade-up"
-                data-aos-delay={`${400 + index * 200}`}
               >
                 {/* Image Card with Hover Overlay */}
                 <div className="w-full md:w-1/2">
@@ -169,11 +168,7 @@ export function About() {
         </div>
 
         {/* CTA */}
-        <div
-          className="mt-24 text-center"
-          data-aos="fade-in"
-          data-aos-delay="1400"
-        >
+        <div className="mt-24 text-center" data-aos="fade-in">
           <div className="rounded-2xl p-12 max-w-4xl mx-auto bg-black border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)]">
             <h3 className="text-3xl font-bold text-white mb-4">
               Ready to Work Together?

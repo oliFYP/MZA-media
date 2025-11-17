@@ -82,7 +82,6 @@ export function Services() {
           <p
             className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
             data-aos="fade-up"
-            data-aos-delay="200"
           >
             We manage every aspect of your digital presence. From scripting to
             publishing and everything in between, we handle the complete
@@ -96,19 +95,13 @@ export function Services() {
           <div
             className="hidden md:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[rgb(100,189,249)] to-transparent opacity-30"
             data-aos="slide-right"
-            data-aos-delay="600"
           ></div>
 
           <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {workflow.map((service, index) => {
               const Icon = service.icon;
               return (
-                <div
-                  key={index}
-                  className="relative group"
-                  data-aos="fade-up"
-                  data-aos-delay={`${800 + index * 200}`}
-                >
+                <div key={index} className="relative group" data-aos="fade-up">
                   <div
                     className="relative rounded-2xl border-2 bg-black/50 backdrop-blur-sm p-8 flex flex-col h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-black/70"
                     style={{

@@ -73,7 +73,6 @@ export function Contact() {
           <p
             className="text-xl text-gray-300 max-w-2xl mx-auto"
             data-aos="fade-up"
-            data-aos-delay="200"
           >
             Ready to elevate your brand? Get in touch and let's create something
             amazing together.
@@ -82,7 +81,7 @@ export function Contact() {
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
-          <div className="space-y-8" data-aos="fade-right" data-aos-delay="400">
+          <div className="space-y-8" data-aos="fade-right">
             <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
 
             <div className="space-y-6">
@@ -121,7 +120,6 @@ export function Contact() {
             <div
               className="mt-12 p-6 rounded-xl bg-[rgb(100,189,249)]/5 border border-[rgb(100,189,249)]/30"
               data-aos="fade-up"
-              data-aos-delay="600"
             >
               <h4 className="text-xl font-bold mb-2">Ready to Get Started?</h4>
               <p className="text-gray-300 mb-4">

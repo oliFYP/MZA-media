@@ -1,6 +1,16 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Zap } from "lucide-react";
 
 export function ImpactSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 750,
+      once: false,
+    });
+  }, []);
+
   return (
     <section className="py-24 bg-black relative text-white overflow-hidden">
       {/* 🌌 ANIMATED PARTICLES BACKGROUND */}
@@ -119,11 +129,18 @@ export function ImpactSection() {
 
       {/* MAIN CONTENT - CENTERED */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-fade-in">
+        <h2
+          className="text-4xl md:text-5xl font-bold mb-8"
+          data-aos="fade-down"
+        >
           Why Professional Media Management Matters
         </h2>
 
-        <div className="flex flex-col items-center gap-6 animate-fade-in-delay">
+        <div
+          className="flex flex-col items-center gap-6"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
           <Zap
             className="w-16 h-16 text-[rgb(100,189,249)]"
             strokeWidth={1.5}

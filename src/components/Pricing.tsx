@@ -1,3 +1,6 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { Check } from "lucide-react";
 
 const pricingTiers = [
@@ -43,6 +46,13 @@ const pricingTiers = [
 ];
 
 export function Pricing() {
+  useEffect(() => {
+    AOS.init({
+      duration: 750,
+      once: false,
+    });
+  }, []);
+
   const scrollToContact = () => {
     const element = document.getElementById("contact");
     if (element) element.scrollIntoView({ behavior: "smooth" });
@@ -93,15 +103,23 @@ export function Pricing() {
       </div>
 
       <div className="relative z-10 container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-aos="fade-down">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Choose Your{" "}
             <span className="text-[rgb(100,189,249)]">Growth Path</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p
+            className="text-xl text-gray-300 max-w-2xl mx-auto"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Tailored packages designed to elevate your brand at every stage
           </p>
-          <p className="text-sm text-gray-400 mt-2">
+          <p
+            className="text-sm text-gray-400 mt-2"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
             Per user/month, billed annually
           </p>
         </div>
@@ -115,7 +133,8 @@ export function Pricing() {
                   ? "border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)]"
                   : "border-gray-700"
               }`}
-              style={{ animationDelay: `${index * 200}ms` }}
+              data-aos="fade-up"
+              data-aos-delay={`${600 + index * 200}`}
             >
               {tier.popular && (
                 <div className="absolute top-0 right-0 bg-gradient-to-r from-[rgb(100,189,249)] to-blue-400 text-black font-semibold px-3 py-1 rounded-bl-lg rounded-tr-lg text-sm">

@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { ChevronDown, HelpCircle } from "lucide-react";
 
 const faqs = [
@@ -31,6 +33,13 @@ const faqs = [
 ];
 
 export function FAQ() {
+  useEffect(() => {
+    AOS.init({
+      duration: 750,
+      once: false,
+    });
+  }, []);
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggleFAQ = (index: number) => {
@@ -69,13 +78,17 @@ export function FAQ() {
       {/* CONTENT */}
       <div className="relative z-10 max-w-4xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-aos="fade-down">
           <HelpCircle className="w-16 h-16 mx-auto mb-6 text-[rgb(100,189,249)]" />
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Frequently Asked{" "}
             <span className="text-[rgb(100,189,249)]">Questions</span>
           </h2>
-          <p className="text-xl text-gray-200">
+          <p
+            className="text-xl text-gray-200"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Curious about our social media management services? Browse our FAQs
             or reach out to learn how we can grow your brand online.
           </p>
@@ -89,6 +102,8 @@ export function FAQ() {
               onClick={() => toggleFAQ(index)}
               className="relative bg-black rounded-2xl border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)] 
               transition-all duration-300 hover:shadow-[0_0_60px_rgba(100,189,249,0.6)]"
+              data-aos="fade-up"
+              data-aos-delay={`${400 + index * 200}`}
             >
               <button className="w-full px-6 py-5 flex items-center justify-between text-left rounded-2xl bg-black">
                 <span className="text-lg font-semibold text-white pr-4">
@@ -115,7 +130,11 @@ export function FAQ() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 text-center">
+        <div
+          className="mt-12 text-center"
+          data-aos="fade-in"
+          data-aos-delay="1600"
+        >
           <p className="text-white font-bold mb-4">Still have questions?</p>
           <button className="text-black px-8 py-3 rounded-xl font-bold transition-opacity duration-300 bg-[rgb(100,189,249)] hover:opacity-90">
             Contact Us

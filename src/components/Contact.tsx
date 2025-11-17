@@ -1,7 +1,16 @@
 import { Mail, Phone, MapPin, Send } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export function Contact() {
+  useEffect(() => {
+    AOS.init({
+      duration: 750,
+      once: false,
+    });
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -57,11 +66,15 @@ export function Contact() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-aos="fade-down">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Let's <span className="text-[rgb(100,189,249)]">Connect</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p
+            className="text-xl text-gray-300 max-w-2xl mx-auto"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             Ready to elevate your brand? Get in touch and let's create something
             amazing together.
           </p>
@@ -69,7 +82,7 @@ export function Contact() {
 
         <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="space-y-8" data-aos="fade-right" data-aos-delay="400">
             <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
 
             <div className="space-y-6">
@@ -105,7 +118,11 @@ export function Contact() {
             </div>
 
             {/* CTA Box */}
-            <div className="mt-12 p-6 rounded-xl bg-[rgb(100,189,249)]/5 border border-[rgb(100,189,249)]/30">
+            <div
+              className="mt-12 p-6 rounded-xl bg-[rgb(100,189,249)]/5 border border-[rgb(100,189,249)]/30"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
               <h4 className="text-xl font-bold mb-2">Ready to Get Started?</h4>
               <p className="text-gray-300 mb-4">
                 Book a free consultation and discover how we can help grow your
@@ -118,7 +135,7 @@ export function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="relative">
+          <div className="relative" data-aos="fade-left" data-aos-delay="400">
             <div className="space-y-6 p-8 rounded-2xl bg-black/50 backdrop-blur-sm border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)]">
               <div>
                 <label

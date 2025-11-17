@@ -1,4 +1,7 @@
 import { FileText, Film, Scissors, Share2, ArrowRight } from "lucide-react";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const workflow = [
   {
@@ -32,6 +35,12 @@ const workflow = [
 ];
 
 export function Services() {
+  useEffect(() => {
+    AOS.init({
+      duration: 750,
+      once: false,
+    });
+  }, []);
   return (
     <section
       id="services"
@@ -65,12 +74,16 @@ export function Services() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16" data-aos="fade-down">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Digital Management{" "}
             <span className="text-[rgb(100,189,249)]">Process</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p
+            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
             We manage every aspect of your digital presence. From scripting to
             publishing and everything in between, we handle the complete
             lifecycle of your content and online identity.
@@ -78,15 +91,24 @@ export function Services() {
         </div>
 
         {/* Workflow Cards with Connection Lines */}
-        <div className="relative">
+        <div className="relative" data-aos="fade-in" data-aos-delay="400">
           {/* Connection Line */}
-          <div className="hidden md:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[rgb(100,189,249)] to-transparent opacity-30"></div>
+          <div
+            className="hidden md:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[rgb(100,189,249)] to-transparent opacity-30"
+            data-aos="slide-right"
+            data-aos-delay="600"
+          ></div>
 
           <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {workflow.map((service, index) => {
               const Icon = service.icon;
               return (
-                <div key={index} className="relative group">
+                <div
+                  key={index}
+                  className="relative group"
+                  data-aos="fade-up"
+                  data-aos-delay={`${800 + index * 200}`}
+                >
                   <div
                     className="relative rounded-2xl border-2 bg-black/50 backdrop-blur-sm p-8 flex flex-col h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-black/70"
                     style={{
@@ -124,7 +146,11 @@ export function Services() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16">
+        <div
+          className="text-center mt-16"
+          data-aos="fade-in"
+          data-aos-delay="1600"
+        >
           <button className="px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 bg-[rgb(100,189,249)] text-black hover:opacity-90 hover:scale-105 shadow-[0_0_30px_rgba(100,189,249,0.4)]">
             Get Started
           </button>

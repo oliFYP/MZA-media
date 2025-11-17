@@ -34,13 +34,13 @@ export function Hero() {
 
       <div className="relative z-10 text-center text-white px-4 max-w-5xl mx-auto mt-48 sm:mt-0">
         <h1
-          data-aos="zoom-out-down"
+          data-aos="zoom-in-down"
           className="text-5xl md:text-7xl font-bold mb-6 tracking-tight"
         >
           Amplify Your Brand
         </h1>
         <p
-          data-aos="zoom-out-down"
+          data-aos="zoom-in-down"
           className="text-4xl md:text-6xl font-bold mb-6 tracking-tight"
           style={{
             color: "rgb(100, 189, 249)",

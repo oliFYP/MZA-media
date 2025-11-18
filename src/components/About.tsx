@@ -11,7 +11,6 @@ const teamMembers = [
     icon: Camera,
     bio: "Heyo! I'm Anthony, self-proclaimed entrepreneur and founder of Visitour. I am passionate about all things real estate and especially photography. I picked up an old DSLR back in 2022 and have been obsessed with home photography ever since. My dream is to one day sell the properties I take pictures of!",
     image: mzaLogo,
-    stat: "100+ Properties",
     quote: "Capturing dreams, one property at a time",
   },
   {
@@ -20,7 +19,6 @@ const teamMembers = [
     icon: Sparkles,
     bio: "Hi, I'm Tyler Morin, a 22-year-old entrepreneur and one of two founders of Visitour. I studied Entrepreneurship at Champlain College and fell in love with real estate while exploring a career as a real estate agent. My passion for creative media, including graphics and cinematic videos, inspired me to start Visitour, where I showcase properties with stunning visuals.",
     image: mzaLogo,
-    stat: "500+ Videos",
     quote: "Turning visions into viral content",
   },
   {
@@ -29,7 +27,6 @@ const teamMembers = [
     icon: Plane,
     bio: "Yo, I'm Fraid Zada, a professional photographer and drone pilot. I am a self-taught photographer who's comfortable shooting all kinds of subjects. My lengthy career began underwater during my time as a scuba diver. Since then, I have expanded my horizons into landscape, portrait, and even automotive photography! My new obsession is aerial real estate content. My background as an airplane pilot shines through the quality of my work.",
     image: mzaLogo,
-    stat: "1000+ Flight Hours",
     quote: "Taking your brand to new heights",
   },
 ];
@@ -120,11 +117,6 @@ export function About() {
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                   >
-                    {/* Stat Badge */}
-                    <div className="absolute top-4 right-4 bg-[rgb(100,189,249)] text-black px-4 py-2 rounded-full font-bold text-sm shadow-lg">
-                      {member.stat}
-                    </div>
-
                     {/* Hover Overlay */}
                     <div
                       className={`absolute inset-0 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center p-8 transition-opacity duration-300 ${

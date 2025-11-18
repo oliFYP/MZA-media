@@ -65,39 +65,27 @@ export function Pricing() {
     >
       {/* 💎 SUBTLE FLOATING SHAPES - BLENDED */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-full h-full bg-gradient-to-b from-black/95 to-black/80"></div>
+        <div className="absolute w-full h-full bg-gradient-to-b from-black/90 to-black/70"></div>
 
-        {/* Floating shapes - subtle like projects section */}
-        {[...Array(6)].map((_, idx) => (
+        {[...Array(30)].map((_, idx) => (
           <div
             key={idx}
-            className="absolute border border-[rgb(100,189,249)] opacity-10 animate-float-gentle"
+            className="absolute w-2 h-2 bg-[rgb(100,189,249)] rounded-full opacity-50 animate-pulse-slow"
             style={{
-              width: `${80 + Math.random() * 100}px`,
-              height: `${80 + Math.random() * 100}px`,
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${20 + Math.random() * 10}s`,
-              borderRadius:
-                idx % 3 === 0 ? "50%" : idx % 3 === 1 ? "20%" : "10%",
             }}
           ></div>
         ))}
 
         <style>{`
-          @keyframes float-gentle {
-            0%, 100% { 
-              transform: translateY(0) rotate(0deg) scale(1);
-              opacity: 0.1;
-            }
-            50% { 
-              transform: translateY(-20px) rotate(90deg) scale(1.1);
-              opacity: 0.15;
-            }
+          @keyframes pulseSlow {
+            0%, 100% { transform: scale(0.5); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.8; }
           }
-          .animate-float-gentle {
-            animation: float-gentle 25s ease-in-out infinite;
+          .animate-pulse-slow {
+            animation: pulseSlow 6s infinite ease-in-out;
           }
         `}</style>
       </div>

@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
     question:
       "What makes MZA Media different from other social media management agencies?",
     answer:
-      "We don’t just post content — we build meaningful digital communities. Our team combines strategy, creativity, and analytics to grow your audience, boost engagement, and strengthen your brand presence across all major platforms.",
+      "We don't just post content — we build meaningful digital communities. Our team combines strategy, creativity, and analytics to grow your audience, boost engagement, and strengthen your brand presence across all major platforms.",
   },
   {
     question: "What's included in your social media management packages?",
@@ -21,115 +21,145 @@ const faqs = [
       "Social media growth depends on consistency and strategy. While some campaigns can gain traction within a few weeks, sustainable growth typically becomes visible within 2–4 months. We focus on long-term engagement and brand credibility rather than quick, short-term spikes.",
   },
   {
-    question: "What if I’m not satisfied with the performance?",
+    question: "What if I'm not satisfied with the performance?",
     answer:
-      "Your satisfaction matters most to us. We monitor analytics daily and adjust strategies to ensure your pages perform at their best. If something isn’t delivering results, we refine the approach — from content tone to posting schedules — until it aligns with your vision and KPIs.",
+      "Your satisfaction matters most to us. We monitor analytics daily and adjust strategies to ensure your pages perform at their best. If something isn't delivering results, we refine the approach — from content tone to posting schedules — until it aligns with your vision and KPIs.",
   },
   {
     question: "Do you work with businesses of all sizes?",
     answer:
-      "Yes! Whether you’re a small business looking to build your first audience or an established brand aiming to refine your digital presence, we tailor our services to match your goals, scale, and budget.",
+      "Yes! Whether you're a small business looking to build your first audience or an established brand aiming to refine your digital presence, we tailor our services to match your goals, scale, and budget.",
   },
 ];
 
 export function FAQ() {
   useEffect(() => {
-    AOS.init({
-      duration: 750,
-      once: false,
-    });
+    AOS.init({ duration: 700, once: false });
   }, []);
 
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <section className="py-24 bg-black relative text-white overflow-hidden">
-      {/* 🌌 ANIMATED PARTICLES BACKGROUND (same as About section) */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-full h-full bg-gradient-to-b from-black/90 to-black/70"></div>
+    <section
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: "#06070F" }}
+    >
+      {/* Top accent */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #64BDF9, transparent)",
+        }}
+      />
 
-        {[...Array(30)].map((_, idx) => (
-          <div
-            key={idx}
-            className="absolute w-2 h-2 bg-[rgb(100,189,249)] rounded-full opacity-50 animate-pulse-slow"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          ></div>
-        ))}
-
-        <style>{`
-          @keyframes pulseSlow {
-            0%, 100% { transform: scale(0.5); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-          }
-          .animate-pulse-slow {
-            animation: pulseSlow 6s infinite ease-in-out;
-          }
-        `}</style>
-      </div>
-
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4">
+      <div className="max-w-4xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16" data-aos="fade-down">
-          <HelpCircle className="w-16 h-16 mx-auto mb-6 text-[rgb(100,189,249)]" />
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Frequently Asked{" "}
-            <span className="text-[rgb(100,189,249)]">Questions</span>
+        <div className="mb-16" data-aos="fade-up">
+          <span
+            className="text-xs font-medium uppercase block mb-4"
+            style={{ color: "#C4FF47", letterSpacing: "0.3em" }}
+          >
+            FAQ
+          </span>
+          <h2
+            className="text-4xl md:text-6xl font-bold leading-none"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Frequently Asked
+            <br />
+            <span style={{ color: "#64BDF9" }}>Questions</span>
           </h2>
-          <p className="text-xl text-gray-200" data-aos="fade-up">
-            Curious about our social media management services? Browse our FAQs
-            or reach out to learn how we can grow your brand online.
-          </p>
         </div>
 
-        {/* FAQ Cards */}
-        <div className="space-y-4">
+        {/* Accordion */}
+        <div className="space-y-3">
           {faqs.map((faq, index) => (
             <div
               key={index}
-              onClick={() => toggleFAQ(index)}
-              className="relative bg-black rounded-2xl border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)] 
-              transition-all duration-300 hover:shadow-[0_0_60px_rgba(100,189,249,0.6)]"
               data-aos="fade-up"
+              data-aos-delay={index * 60}
+              className="rounded-xl overflow-hidden transition-all duration-300"
+              style={{
+                border: `1px solid ${openIndex === index ? "#64BDF9" : "#1B1E30"}`,
+                backgroundColor:
+                  openIndex === index ? "#0D0F1E" : "#080B17",
+              }}
             >
-              <button className="w-full px-6 py-5 flex items-center justify-between text-left rounded-2xl bg-black">
-                <span className="text-lg font-semibold text-white pr-4">
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  className={`w-6 h-6 text-gray-400 flex-shrink-0 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
+              <button
+                className="w-full px-6 py-5 flex items-center justify-between text-left gap-4"
+                onClick={() =>
+                  setOpenIndex(openIndex === index ? null : index)
+                }
+              >
+                <div className="flex items-center gap-4">
+                  <span
+                    className="text-sm font-mono flex-shrink-0"
+                    style={{ color: "#3D4560" }}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span
+                    className="text-sm md:text-base font-semibold text-left"
+                    style={{
+                      color: "#E4ECF7",
+                      fontFamily: "var(--font-display)",
+                    }}
+                  >
+                    {faq.question}
+                  </span>
+                </div>
+                <div
+                  className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300"
+                  style={{
+                    border: `1px solid ${openIndex === index ? "#64BDF9" : "#1B1E30"}`,
+                    backgroundColor:
+                      openIndex === index
+                        ? "rgba(100,189,249,0.1)"
+                        : "transparent",
+                  }}
+                >
+                  {openIndex === index ? (
+                    <Minus size={12} style={{ color: "#64BDF9" }} />
+                  ) : (
+                    <Plus size={12} style={{ color: "#5A6585" }} />
+                  )}
+                </div>
               </button>
 
               <div
                 className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
+                  openIndex === index ? "max-h-64" : "max-h-0"
                 }`}
               >
-                <div className="px-6 py-4 bg-black border-t border-[rgb(100,189,249)]">
-                  <p className="text-gray-200 leading-relaxed">{faq.answer}</p>
+                <div
+                  className="pb-6"
+                  style={{ paddingLeft: "calc(1.5rem + 2rem + 1rem)", paddingRight: "1.5rem" }}
+                >
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "#5A6585" }}
+                  >
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="mt-12 text-center" data-aos="fade-in">
-          <p className="text-white font-bold mb-4">Still have questions?</p>
-          <button className="text-black px-8 py-3 rounded-xl font-bold transition-opacity duration-300 bg-[rgb(100,189,249)] hover:opacity-90">
+        {/* Bottom CTA */}
+        <div className="mt-14 text-center" data-aos="fade-up">
+          <p className="mb-4 text-sm" style={{ color: "#5A6585" }}>
+            Still have questions?
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex px-8 py-3 rounded-xl font-semibold text-sm transition-all duration-300 hover:opacity-90 hover:scale-105"
+            style={{ backgroundColor: "#C4FF47", color: "#06070F" }}
+          >
             Contact Us
-          </button>
+          </a>
         </div>
       </div>
     </section>

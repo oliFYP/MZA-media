@@ -33,62 +33,59 @@ const teamMembers = [
 
 export function About() {
   useEffect(() => {
-    AOS.init({
-      duration: 750,
-      once: false,
-    });
+    AOS.init({ duration: 700, once: false });
   }, []);
 
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-black relative text-white overflow-hidden">
-      {/* 🌌 ANIMATED PARTICLES BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-full h-full bg-gradient-to-b from-black/90 to-black/70"></div>
+    <section
+      id="about"
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: "#09090F" }}
+    >
+      {/* Top glow */}
+      <div
+        className="absolute top-0 right-0 pointer-events-none"
+        style={{
+          width: "400px",
+          height: "400px",
+          background:
+            "radial-gradient(ellipse at top right, rgba(100,189,249,0.05) 0%, transparent 65%)",
+        }}
+      />
 
-        {/* glowing particles */}
-        {[...Array(30)].map((_, idx) => (
-          <div
-            key={idx}
-            className="absolute w-2 h-2 bg-[rgb(100,189,249)] rounded-full opacity-50 animate-pulse-slow"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          ></div>
-        ))}
-
-        <style>{`
-          @keyframes pulseSlow {
-            0%, 100% { transform: scale(0.5); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-          }
-          .animate-pulse-slow {
-            animation: pulseSlow 6s infinite ease-in-out;
-          }
-        `}</style>
-      </div>
-
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4">
-        <div className="text-center mb-20" data-aos="fade-down">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Meet The <span className="text-[rgb(100,189,249)]">Team</span>
-          </h2>
-          <p
-            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-            data-aos="fade-up"
-            data-aos-delay="200"
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-20" data-aos="fade-up">
+          <span
+            className="text-xs font-medium uppercase block mb-4"
+            style={{ color: "#C4FF47", letterSpacing: "0.3em" }}
           >
-            The creative minds behind Visitour Media. We're passionate about
-            helping businesses grow through innovative media and marketing
-            solutions.
-          </p>
+            The Team
+          </span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <h2
+              className="text-4xl md:text-6xl font-bold leading-none"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Meet The
+              <br />
+              <span style={{ color: "#64BDF9" }}>Minds Behind</span>
+            </h2>
+            <p
+              className="text-base max-w-sm leading-relaxed"
+              style={{ color: "#5A6585" }}
+            >
+              The creative minds behind Visitour Media. We're passionate about
+              helping businesses grow through innovative media and marketing
+              solutions.
+            </p>
+          </div>
         </div>
 
-        <div className="space-y-24">
+        {/* Team grid */}
+        <div className="space-y-20">
           {teamMembers.map((member, index) => {
             const Icon = member.icon;
             const isEven = index % 2 === 0;
@@ -99,58 +96,85 @@ export function About() {
                 key={index}
                 className={`flex flex-col ${
                   isEven ? "md:flex-row" : "md:flex-row-reverse"
-                } gap-12 items-center`}
+                } gap-10 md:gap-16 items-center`}
                 data-aos="fade-up"
               >
-                {/* Image Card with Hover Overlay */}
-                <div className="w-full md:w-1/2">
+                {/* Portrait */}
+                <div className="w-full md:w-5/12 flex-shrink-0">
                   <div
-                    className="relative rounded-2xl border-2 overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgb(100,189,249)] cursor-pointer group"
-                    style={{
-                      borderColor: "rgb(100,189,249)",
-                      boxShadow: "0 0 40px rgba(100,189,249,0.3)",
-                      backgroundImage: `url(${member.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      height: "24rem",
-                    }}
+                    className="relative rounded-2xl overflow-hidden cursor-pointer"
+                    style={{ height: "380px" }}
                     onMouseEnter={() => setHoveredIndex(index)}
                     onMouseLeave={() => setHoveredIndex(null)}
                   >
-                    {/* Hover Overlay */}
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+
+                    {/* Hover overlay */}
                     <div
-                      className={`absolute inset-0 bg-black/90 backdrop-blur-sm flex flex-col items-center justify-center p-8 transition-opacity duration-300 ${
-                        isHovered ? "opacity-100" : "opacity-0"
-                      }`}
+                      className="absolute inset-0 flex flex-col items-center justify-center p-8 transition-opacity duration-300"
+                      style={{
+                        backgroundColor: "rgba(6,7,15,0.92)",
+                        opacity: isHovered ? 1 : 0,
+                      }}
                     >
                       <Icon
-                        className="w-16 h-16 text-[rgb(100,189,249)] mb-4"
+                        size={44}
+                        style={{ color: "#64BDF9", marginBottom: "16px" }}
                         strokeWidth={1.5}
                       />
-                      <p className="text-xl text-center text-white font-semibold italic">
+                      <p
+                        className="text-lg text-center font-medium italic"
+                        style={{ color: "#E4ECF7" }}
+                      >
                         "{member.quote}"
                       </p>
                     </div>
+
+                    {/* Frame border */}
+                    <div
+                      className="absolute inset-0 rounded-2xl transition-all duration-300 pointer-events-none"
+                      style={{
+                        border: `2px solid ${isHovered ? "#64BDF9" : "#1B1E30"}`,
+                        boxShadow: isHovered
+                          ? "0 0 40px rgba(100,189,249,0.2)"
+                          : "none",
+                      }}
+                    />
                   </div>
                 </div>
 
-                {/* Text */}
-                <div className="w-full md:w-1/2">
-                  <div className="flex items-center gap-3 mb-4">
+                {/* Content */}
+                <div className="w-full md:w-7/12">
+                  <div className="flex items-center gap-2 mb-3">
                     <Icon
-                      className="w-10 h-10 text-[rgb(100,189,249)]"
+                      size={18}
+                      style={{ color: "#64BDF9" }}
                       strokeWidth={1.5}
                     />
-                    <div>
-                      <h3 className="text-3xl font-bold text-white">
-                        {member.name}
-                      </h3>
-                      <p className="text-lg font-medium text-[rgb(100,189,249)]">
-                        {member.role}
-                      </p>
-                    </div>
+                    <span
+                      className="text-sm font-medium"
+                      style={{ color: "#64BDF9" }}
+                    >
+                      {member.role}
+                    </span>
                   </div>
-                  <p className="text-lg text-gray-200 leading-relaxed">
+                  <h3
+                    className="text-3xl md:text-4xl font-bold mb-6"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "#E4ECF7",
+                    }}
+                  >
+                    {member.name}
+                  </h3>
+                  <p
+                    className="text-base leading-relaxed"
+                    style={{ color: "#5A6585" }}
+                  >
                     {member.bio}
                   </p>
                 </div>
@@ -160,19 +184,34 @@ export function About() {
         </div>
 
         {/* CTA */}
-        <div className="mt-24 text-center" data-aos="fade-in">
-          <div className="rounded-2xl p-12 max-w-4xl mx-auto bg-black border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)]">
-            <h3 className="text-3xl font-bold text-white mb-4">
-              Ready to Work Together?
-            </h3>
-            <p className="text-xl text-gray-300 mb-8">
-              Let's discuss how we can help elevate your brand and drive real
-              results for your business.
-            </p>
-            <button className="px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 bg-[rgb(100,189,249)] text-black hover:opacity-90 hover:scale-105">
-              Get In Touch
-            </button>
-          </div>
+        <div
+          className="mt-20 p-10 md:p-14 rounded-2xl text-center"
+          data-aos="fade-up"
+          style={{
+            backgroundColor: "#0D0F1E",
+            border: "1px solid #1B1E30",
+          }}
+        >
+          <h3
+            className="text-2xl md:text-3xl font-bold mb-4"
+            style={{ fontFamily: "var(--font-display)", color: "#E4ECF7" }}
+          >
+            Ready to Work Together?
+          </h3>
+          <p
+            className="text-base mb-8 max-w-xl mx-auto"
+            style={{ color: "#5A6585" }}
+          >
+            Let's discuss how we can help elevate your brand and drive real
+            results for your business.
+          </p>
+          <a
+            href="#contact"
+            className="inline-flex px-10 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:opacity-90 hover:scale-105"
+            style={{ backgroundColor: "#C4FF47", color: "#06070F" }}
+          >
+            Get In Touch
+          </a>
         </div>
       </div>
     </section>

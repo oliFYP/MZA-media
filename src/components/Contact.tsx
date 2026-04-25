@@ -5,10 +5,7 @@ import "aos/dist/aos.css";
 
 export function Contact() {
   useEffect(() => {
-    AOS.init({
-      duration: 750,
-      once: false,
-    });
+    AOS.init({ duration: 700, once: false });
   }, []);
 
   const [formData, setFormData] = useState({
@@ -19,201 +16,251 @@ export function Contact() {
   });
 
   const handleSubmit = () => {
-    // Handle form submission here
     console.log("Form submitted:", formData);
   };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const inputStyle = {
+    backgroundColor: "#080B17",
+    border: "1px solid #1B1E30",
+    color: "#E4ECF7",
+    width: "100%",
+    padding: "12px 16px",
+    borderRadius: "12px",
+    fontSize: "14px",
+    outline: "none",
+    transition: "border-color 0.2s",
+    fontFamily: "var(--font-body)",
   };
 
   return (
     <section
       id="contact"
-      className="py-24 bg-black relative text-white overflow-hidden"
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: "#06070F" }}
     >
-      {/* 🌌 ANIMATED PARTICLES BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-full h-full bg-gradient-to-b from-black/90 to-black/70"></div>
+      {/* Top accent */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #64BDF9, transparent)",
+        }}
+      />
 
-        {[...Array(30)].map((_, idx) => (
-          <div
-            key={idx}
-            className="absolute w-2 h-2 bg-[rgb(100,189,249)] rounded-full opacity-50 animate-pulse-slow"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          ></div>
-        ))}
+      {/* Corner glow — lime */}
+      <div
+        className="absolute top-0 right-0 pointer-events-none"
+        style={{
+          width: "400px",
+          height: "400px",
+          background:
+            "radial-gradient(ellipse at top right, rgba(196,255,71,0.05) 0%, transparent 65%)",
+        }}
+      />
 
-        <style>{`
-          @keyframes pulseSlow {
-            0%, 100% { transform: scale(0.5); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-          }
-          .animate-pulse-slow {
-            animation: pulseSlow 6s infinite ease-in-out;
-          }
-        `}</style>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16" data-aos="fade-down">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Let's <span className="text-[rgb(100,189,249)]">Connect</span>
-          </h2>
-          <p
-            className="text-xl text-gray-300 max-w-2xl mx-auto"
-            data-aos="fade-up"
+        <div className="mb-20" data-aos="fade-up">
+          <span
+            className="text-xs font-medium uppercase block mb-4"
+            style={{ color: "#C4FF47", letterSpacing: "0.3em" }}
           >
-            Ready to elevate your brand? Get in touch and let's create something
-            amazing together.
-          </p>
+            Contact
+          </span>
+          <h2
+            className="text-4xl md:text-6xl font-bold leading-none"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Let's
+            <br />
+            <span style={{ color: "#64BDF9" }}>Connect</span>
+          </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Info */}
-          <div className="space-y-8" data-aos="fade-right">
-            <h3 className="text-2xl font-bold mb-6">Get In Touch</h3>
+        <div className="grid md:grid-cols-2 gap-16">
+          {/* Left: info */}
+          <div data-aos="fade-right">
+            <p
+              className="text-base leading-relaxed mb-10"
+              style={{ color: "#5A6585" }}
+            >
+              Ready to elevate your brand? Get in touch and let's create
+              something amazing together.
+            </p>
 
-            <div className="space-y-6">
-              <div className="flex items-start gap-4 group">
-                <div className="p-3 rounded-lg bg-[rgb(100,189,249)]/10 border border-[rgb(100,189,249)] group-hover:bg-[rgb(100,189,249)]/20 transition-all duration-300">
-                  <Mail className="w-6 h-6 text-[rgb(100,189,249)]" />
+            <div className="space-y-6 mb-10">
+              {[
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: "contact@visitourmedia.com",
+                },
+                { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
+                {
+                  icon: MapPin,
+                  label: "Location",
+                  value: "Saint-Jean-sur-Richelieu, QC",
+                },
+              ].map(({ icon: Icon, label, value }, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      backgroundColor: "#0D0F1E",
+                      border: "1px solid #1B1E30",
+                    }}
+                  >
+                    <Icon size={16} style={{ color: "#64BDF9" }} />
+                  </div>
+                  <div>
+                    <div
+                      className="text-xs uppercase tracking-wider mb-1"
+                      style={{ color: "#3D4560" }}
+                    >
+                      {label}
+                    </div>
+                    <div
+                      className="text-sm font-medium"
+                      style={{ color: "#E4ECF7" }}
+                    >
+                      {value}
+                    </div>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Email</h4>
-                  <p className="text-gray-300">contact@visitourmedia.com</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 group">
-                <div className="p-3 rounded-lg bg-[rgb(100,189,249)]/10 border border-[rgb(100,189,249)] group-hover:bg-[rgb(100,189,249)]/20 transition-all duration-300">
-                  <Phone className="w-6 h-6 text-[rgb(100,189,249)]" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Phone</h4>
-                  <p className="text-gray-300">+1 (555) 123-4567</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 group">
-                <div className="p-3 rounded-lg bg-[rgb(100,189,249)]/10 border border-[rgb(100,189,249)] group-hover:bg-[rgb(100,189,249)]/20 transition-all duration-300">
-                  <MapPin className="w-6 h-6 text-[rgb(100,189,249)]" />
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Location</h4>
-                  <p className="text-gray-300">Saint-Jean-sur-Richelieu, QC</p>
-                </div>
-              </div>
+              ))}
             </div>
 
-            {/* CTA Box */}
+            {/* CTA box */}
             <div
-              className="mt-12 p-6 rounded-xl bg-[rgb(100,189,249)]/5 border border-[rgb(100,189,249)]/30"
+              className="p-6 rounded-2xl"
               data-aos="fade-up"
+              style={{
+                backgroundColor: "#0D0F1E",
+                border: "1px solid #1B1E30",
+              }}
             >
-              <h4 className="text-xl font-bold mb-2">Ready to Get Started?</h4>
-              <p className="text-gray-300 mb-4">
-                Book a free consultation and discover how we can help grow your
-                brand.
+              <h4
+                className="text-lg font-bold mb-2"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  color: "#E4ECF7",
+                }}
+              >
+                Ready to Get Started?
+              </h4>
+              <p className="text-sm mb-5" style={{ color: "#5A6585" }}>
+                Book a free consultation and discover how we can help grow
+                your brand.
               </p>
-              <button className="px-6 py-2 rounded-lg bg-[rgb(100,189,249)] text-black font-semibold hover:opacity-90 transition-opacity duration-300">
+              <button
+                className="px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 hover:opacity-90"
+                style={{ backgroundColor: "#C4FF47", color: "#06070F" }}
+              >
                 Schedule a Call
               </button>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="relative" data-aos="fade-left" data-aos-delay="400">
-            <div className="space-y-6 p-8 rounded-2xl bg-black/50 backdrop-blur-sm border-2 border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)]">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-semibold mb-2"
-                >
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-black/70 border border-gray-700 text-white focus:border-[rgb(100,189,249)] focus:outline-none transition-colors duration-300"
-                  placeholder="John Doe"
-                />
-              </div>
+          {/* Right: form */}
+          <div data-aos="fade-left" data-aos-delay="200">
+            <div
+              className="p-8 rounded-2xl"
+              style={{
+                backgroundColor: "#0D0F1E",
+                border: "1px solid #1B1E30",
+              }}
+            >
+              <div className="space-y-5">
+                {[
+                  {
+                    label: "Full Name",
+                    id: "name",
+                    type: "text",
+                    placeholder: "John Doe",
+                  },
+                  {
+                    label: "Email Address",
+                    id: "email",
+                    type: "email",
+                    placeholder: "john@example.com",
+                  },
+                  {
+                    label: "Phone Number",
+                    id: "phone",
+                    type: "tel",
+                    placeholder: "+1 (555) 123-4567",
+                  },
+                ].map(({ label, id, type, placeholder }) => (
+                  <div key={id}>
+                    <label
+                      htmlFor={id}
+                      className="block text-xs uppercase tracking-wider mb-2"
+                      style={{ color: "#5A6585" }}
+                    >
+                      {label}
+                    </label>
+                    <input
+                      type={type}
+                      id={id}
+                      name={id}
+                      value={formData[id as keyof typeof formData]}
+                      onChange={handleChange}
+                      placeholder={placeholder}
+                      style={inputStyle}
+                      onFocus={(e) => {
+                        (e.target as HTMLInputElement).style.borderColor =
+                          "#64BDF9";
+                      }}
+                      onBlur={(e) => {
+                        (e.target as HTMLInputElement).style.borderColor =
+                          "#1B1E30";
+                      }}
+                    />
+                  </div>
+                ))}
 
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-semibold mb-2"
-                >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-black/70 border border-gray-700 text-white focus:border-[rgb(100,189,249)] focus:outline-none transition-colors duration-300"
-                  placeholder="john@example.com"
-                />
-              </div>
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-xs uppercase tracking-wider mb-2"
+                    style={{ color: "#5A6585" }}
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={5}
+                    placeholder="Tell us about your project..."
+                    style={{ ...inputStyle, resize: "none" }}
+                    onFocus={(e) => {
+                      (e.target as HTMLTextAreaElement).style.borderColor =
+                        "#64BDF9";
+                    }}
+                    onBlur={(e) => {
+                      (e.target as HTMLTextAreaElement).style.borderColor =
+                        "#1B1E30";
+                    }}
+                  />
+                </div>
 
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-semibold mb-2"
+                <button
+                  onClick={handleSubmit}
+                  className="w-full py-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 transition-all duration-300 hover:opacity-90 hover:scale-[1.02]"
+                  style={{ backgroundColor: "#64BDF9", color: "#06070F" }}
                 >
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-black/70 border border-gray-700 text-white focus:border-[rgb(100,189,249)] focus:outline-none transition-colors duration-300"
-                  placeholder="+1 (555) 123-4567"
-                />
+                  Send Message
+                  <Send size={16} />
+                </button>
               </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-semibold mb-2"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-lg bg-black/70 border border-gray-700 text-white focus:border-[rgb(100,189,249)] focus:outline-none transition-colors duration-300 resize-none"
-                  placeholder="Tell us about your project..."
-                />
-              </div>
-
-              <button
-                onClick={handleSubmit}
-                className="w-full py-4 rounded-lg bg-[rgb(100,189,249)] text-black font-bold text-lg hover:opacity-90 transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2 shadow-[0_0_30px_rgba(100,189,249,0.4)]"
-              >
-                Send Message
-                <Send className="w-5 h-5" />
-              </button>
             </div>
           </div>
         </div>

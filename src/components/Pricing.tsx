@@ -45,119 +45,218 @@ const pricingTiers = [
   },
 ];
 
+const stats = [
+  { value: "500K+", label: "Views Generated" },
+  { value: "50+", label: "Clients Served" },
+  { value: "95%", label: "Client Retention" },
+];
+
 export function Pricing() {
   useEffect(() => {
-    AOS.init({
-      duration: 750,
-      once: false,
-    });
+    AOS.init({ duration: 700, once: false });
   }, []);
 
   const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section
-      id="services"
-      className="py-24 bg-black relative text-white overflow-hidden"
+      id="pricing"
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: "#06070F" }}
     >
-      {/* 💎 SUBTLE FLOATING SHAPES - BLENDED */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-full h-full bg-gradient-to-b from-black/90 to-black/70"></div>
+      {/* Glow corner */}
+      <div
+        className="absolute bottom-0 left-0 pointer-events-none"
+        style={{
+          width: "400px",
+          height: "400px",
+          background:
+            "radial-gradient(ellipse at bottom left, rgba(100,189,249,0.06) 0%, transparent 65%)",
+        }}
+      />
 
-        {[...Array(30)].map((_, idx) => (
-          <div
-            key={idx}
-            className="absolute w-2 h-2 bg-[rgb(100,189,249)] rounded-full opacity-50 animate-pulse-slow"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          ></div>
-        ))}
-
-        <style>{`
-          @keyframes pulseSlow {
-            0%, 100% { transform: scale(0.5); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-          }
-          .animate-pulse-slow {
-            animation: pulseSlow 6s infinite ease-in-out;
-          }
-        `}</style>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="text-center mb-16" data-aos="fade-down">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Choose Your{" "}
-            <span className="text-[rgb(100,189,249)]">Growth Path</span>
-          </h2>
-          <p
-            className="text-xl text-gray-300 max-w-2xl mx-auto"
-            data-aos="fade-up"
-            data-aos-delay="200"
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-20" data-aos="fade-up">
+          <span
+            className="text-xs font-medium uppercase block mb-4"
+            style={{ color: "#C4FF47", letterSpacing: "0.3em" }}
           >
-            Tailored packages designed to elevate your brand at every stage
-          </p>
-          <p
-            className="text-sm text-gray-400 mt-2"
-            data-aos="fade-up"
-            data-aos-delay="400"
-          >
-            Per user/month, billed annually
-          </p>
+            Pricing
+          </span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <h2
+              className="text-4xl md:text-6xl font-bold leading-none"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Choose Your
+              <br />
+              <span style={{ color: "#64BDF9" }}>Growth Path</span>
+            </h2>
+            <p
+              className="text-base max-w-sm leading-relaxed"
+              style={{ color: "#5A6585" }}
+            >
+              Tailored packages designed to elevate your brand at every stage of
+              your journey. Billed monthly.
+            </p>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {pricingTiers.map((tier) => (
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-20">
+          {pricingTiers.map((tier, index) => (
             <div
               key={tier.name}
-              className={`relative rounded-2xl border-2 p-8 flex flex-col justify-between transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-black/50 backdrop-blur-sm ${
-                tier.popular
-                  ? "border-[rgb(100,189,249)] shadow-[0_0_40px_rgba(100,189,249,0.3)]"
-                  : "border-gray-700"
-              }`}
               data-aos="fade-up"
+              data-aos-delay={index * 100}
+              className="relative flex flex-col p-8 rounded-2xl transition-all duration-300"
+              style={{
+                backgroundColor: tier.popular ? "#0D0F1E" : "#080B17",
+                border: `1px solid ${tier.popular ? "#64BDF9" : "#1B1E30"}`,
+                boxShadow: tier.popular
+                  ? "0 0 60px rgba(100,189,249,0.09)"
+                  : "none",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLDivElement).style.transform =
+                  "translateY(-4px)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLDivElement).style.transform =
+                  "translateY(0)";
+              }}
             >
               {tier.popular && (
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-[rgb(100,189,249)] to-blue-400 text-black font-semibold px-3 py-1 rounded-bl-lg rounded-tr-lg text-sm">
+                <div
+                  className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-semibold whitespace-nowrap"
+                  style={{ backgroundColor: "#C4FF47", color: "#06070F" }}
+                >
                   Most Popular
                 </div>
               )}
 
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold">{tier.name}</h3>
-                <p className="text-base text-gray-400">{tier.description}</p>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold text-[rgb(100,189,249)]">
+              <div className="mb-8">
+                <h3
+                  className="text-lg font-bold mb-1"
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    color: "#E4ECF7",
+                  }}
+                >
+                  {tier.name}
+                </h3>
+                <p className="text-sm mb-6" style={{ color: "#5A6585" }}>
+                  {tier.description}
+                </p>
+                <div className="flex items-baseline gap-1">
+                  <span
+                    className="text-5xl font-bold"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: tier.popular ? "#64BDF9" : "#E4ECF7",
+                    }}
+                  >
                     {tier.price}
                   </span>
-                  <span className="text-gray-400"> /month</span>
+                  <span className="text-sm" style={{ color: "#5A6585" }}>
+                    /month
+                  </span>
                 </div>
               </div>
 
-              <ul className="space-y-3 flex-1 mb-8">
+              <ul className="space-y-4 flex-1 mb-8">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-[rgb(100,189,249)] mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-gray-200">{feature}</span>
+                    <div
+                      className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{
+                        backgroundColor: "rgba(100,189,249,0.1)",
+                        border: "1px solid rgba(100,189,249,0.25)",
+                      }}
+                    >
+                      <Check size={10} style={{ color: "#64BDF9" }} />
+                    </div>
+                    <span
+                      className="text-sm leading-relaxed"
+                      style={{ color: "#9AA3BE" }}
+                    >
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
+
               <button
                 onClick={scrollToContact}
-                className={`w-full py-3 rounded-lg font-semibold transition-all duration-300 ${
+                className="w-full py-3.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:opacity-90"
+                style={
                   tier.popular
-                    ? "bg-[rgb(100,189,249)] text-black hover:opacity-90"
-                    : "border border-gray-600 text-white hover:bg-[rgb(100,189,249)] hover:text-black"
-                }`}
+                    ? { backgroundColor: "#64BDF9", color: "#06070F" }
+                    : {
+                        backgroundColor: "transparent",
+                        border: "1px solid #1B1E30",
+                        color: "#7A85A8",
+                      }
+                }
+                onMouseEnter={(e) => {
+                  if (!tier.popular) {
+                    (e.currentTarget as HTMLButtonElement).style.borderColor =
+                      "#64BDF9";
+                    (e.currentTarget as HTMLButtonElement).style.color =
+                      "#64BDF9";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!tier.popular) {
+                    (e.currentTarget as HTMLButtonElement).style.borderColor =
+                      "#1B1E30";
+                    (e.currentTarget as HTMLButtonElement).style.color =
+                      "#7A85A8";
+                  }
+                }}
               >
                 Get Started
               </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats band */}
+        <div
+          className="rounded-2xl p-8 md:p-12 grid md:grid-cols-3"
+          style={{
+            backgroundColor: "#0D0F1E",
+            border: "1px solid #1B1E30",
+          }}
+          data-aos="fade-up"
+        >
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className="flex flex-col items-center text-center py-8 md:py-0 md:px-8"
+              style={{
+                borderLeft: i > 0 ? "1px solid #1B1E30" : "none",
+                borderTop: i > 0 ? "1px solid #1B1E30" : "none",
+              }}
+            >
+              <span
+                className="text-5xl font-bold mb-2"
+                style={{
+                  fontFamily: "var(--font-display)",
+                  color: "#64BDF9",
+                }}
+              >
+                {stat.value}
+              </span>
+              <span
+                className="text-xs uppercase tracking-widest"
+                style={{ color: "#5A6585" }}
+              >
+                {stat.label}
+              </span>
             </div>
           ))}
         </div>

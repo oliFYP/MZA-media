@@ -1,4 +1,4 @@
-import { FileText, Film, Scissors, Share2, ArrowRight } from "lucide-react";
+import { FileText, Film, Scissors, Share2 } from "lucide-react";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -36,119 +36,215 @@ const workflow = [
 
 export function Services() {
   useEffect(() => {
-    AOS.init({
-      duration: 750,
-      once: false,
-    });
+    AOS.init({ duration: 700, once: false });
   }, []);
+
   return (
     <section
       id="services"
-      className="py-24 bg-black relative text-white overflow-hidden"
+      className="py-24 relative overflow-hidden"
+      style={{ backgroundColor: "#06070F" }}
     >
-      {/* 🌌 ANIMATED PARTICLES BACKGROUND */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute w-full h-full bg-gradient-to-b from-black/90 to-black/70"></div>
+      {/* Top accent line */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #64BDF9, transparent)",
+        }}
+      />
 
-        {[...Array(30)].map((_, idx) => (
-          <div
-            key={idx}
-            className="absolute w-2 h-2 bg-[rgb(100,189,249)] rounded-full opacity-50 animate-pulse-slow"
-            style={{
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-            }}
-          ></div>
-        ))}
+      {/* Corner glow */}
+      <div
+        className="absolute top-0 right-0 pointer-events-none"
+        style={{
+          width: "400px",
+          height: "400px",
+          background:
+            "radial-gradient(ellipse at top right, rgba(100,189,249,0.06) 0%, transparent 65%)",
+        }}
+      />
 
-        <style>{`
-          @keyframes pulseSlow {
-            0%, 100% { transform: scale(0.5); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-          }
-          .animate-pulse-slow {
-            animation: pulseSlow 6s infinite ease-in-out;
-          }
-        `}</style>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16" data-aos="fade-down">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Digital Management{" "}
-            <span className="text-[rgb(100,189,249)]">Process</span>
-          </h2>
-          <p
-            className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
-            data-aos="fade-up"
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="mb-20" data-aos="fade-up">
+          <span
+            className="text-xs font-medium uppercase block mb-4"
+            style={{ color: "#C4FF47", letterSpacing: "0.3em" }}
           >
-            We manage every aspect of your digital presence. From scripting to
-            publishing and everything in between, we handle the complete
-            lifecycle of your content and online identity.
-          </p>
-        </div>
-
-        {/* Workflow Cards with Connection Lines */}
-        <div className="relative" data-aos="fade-in" data-aos-delay="400">
-          {/* Connection Line */}
-          <div
-            className="hidden md:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[rgb(100,189,249)] to-transparent opacity-30"
-            data-aos="slide-right"
-          ></div>
-
-          <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            {workflow.map((service, index) => {
-              const Icon = service.icon;
-              return (
-                <div key={index} className="relative group" data-aos="fade-up">
-                  <div
-                    className="relative rounded-2xl border-2 bg-black/50 backdrop-blur-sm p-8 flex flex-col h-full transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-black/70"
-                    style={{
-                      borderColor: "rgb(100,189,249)",
-                      boxShadow: "0 0 40px rgba(100,189,249,0.3)",
-                    }}
-                  >
-                    {/* Step Number Badge */}
-                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-[rgb(100,189,249)] rounded-full flex items-center justify-center text-black font-bold text-lg shadow-[0_0_20px_rgba(100,189,249,0.6)]">
-                      {service.step}
-                    </div>
-
-                    <div className="mb-6">
-                      <Icon
-                        className="w-14 h-14 mb-4 text-[rgb(100,189,249)] group-hover:scale-110 transition-transform duration-300"
-                        strokeWidth={1.5}
-                      />
-                      <h3 className="text-2xl font-bold mb-3">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-
-                    {/* Arrow indicator between cards (hidden on last card) */}
-                    {index < workflow.length - 1 && (
-                      <ArrowRight className="hidden md:block absolute -right-10 top-1/2 -translate-y-1/2 w-8 h-8 text-[rgb(100,189,249)] opacity-50" />
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            How We Work
+          </span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <h2
+              className="text-4xl md:text-6xl font-bold leading-none"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Digital Management
+              <br />
+              <span style={{ color: "#64BDF9" }}>Process</span>
+            </h2>
+            <p
+              className="text-base max-w-sm leading-relaxed"
+              style={{ color: "#5A6585", fontFamily: "var(--font-body)" }}
+            >
+              We manage every aspect of your digital presence. From scripting to
+              publishing and everything in between, we handle the complete
+              lifecycle of your content.
+            </p>
           </div>
         </div>
 
-        {/* CTA */}
+        {/* Step cards */}
+        <div className="grid md:grid-cols-4 gap-6">
+          {workflow.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 80}
+                className="relative group"
+              >
+                <div
+                  className="relative p-8 rounded-2xl h-full transition-all duration-300 cursor-default"
+                  style={{
+                    backgroundColor: "#0D0F1E",
+                    border: "1px solid #1B1E30",
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.borderColor = "#64BDF9";
+                    el.style.transform = "translateY(-4px)";
+                    el.style.boxShadow = "0 0 40px rgba(100,189,249,0.08)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.borderColor = "#1B1E30";
+                    el.style.transform = "translateY(0)";
+                    el.style.boxShadow = "none";
+                  }}
+                >
+                  {/* Large ghost step number */}
+                  <div
+                    className="font-bold mb-6 leading-none select-none"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "4.5rem",
+                      color: "rgba(100,189,249,0.08)",
+                      letterSpacing: "-0.05em",
+                    }}
+                  >
+                    {step.step}
+                  </div>
+
+                  <Icon
+                    className="mb-5 transition-transform duration-300 group-hover:scale-110"
+                    size={28}
+                    style={{ color: "#64BDF9" }}
+                    strokeWidth={1.5}
+                  />
+
+                  <h3
+                    className="text-xl font-bold mb-3"
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      color: "#E4ECF7",
+                    }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "#5A6585" }}
+                  >
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Connector chevron */}
+                {index < 3 && (
+                  <div
+                    className="hidden md:flex absolute top-1/2 -right-3.5 z-10 w-7 h-7 items-center justify-center -translate-y-1/2"
+                    style={{
+                      backgroundColor: "#06070F",
+                      border: "1px solid #1B1E30",
+                      borderRadius: "50%",
+                    }}
+                  >
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 10 10"
+                      fill="none"
+                    >
+                      <path
+                        d="M3 1.5L7 5L3 8.5"
+                        stroke="#3D4560"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* CTA + progress */}
         <div
-          className="text-center mt-16"
-          data-aos="fade-in"
-          data-aos-delay="1600"
+          className="mt-16 flex flex-col md:flex-row items-center justify-between gap-8"
+          data-aos="fade-up"
         >
-          <button className="px-10 py-4 rounded-xl text-lg font-bold transition-all duration-300 bg-[rgb(100,189,249)] text-black hover:opacity-90 hover:scale-105 shadow-[0_0_30px_rgba(100,189,249,0.4)]">
+          <a
+            href="#contact"
+            className="px-8 py-4 rounded-xl font-semibold text-base transition-all duration-300 hover:opacity-90 hover:scale-105"
+            style={{ backgroundColor: "#C4FF47", color: "#06070F" }}
+          >
             Get Started
-          </button>
+          </a>
+
+          <div className="flex-1 max-w-xs w-full">
+            <div
+              className="flex justify-between text-xs mb-2"
+              style={{ color: "#5A6585" }}
+            >
+              <span>Process Completion</span>
+              <span style={{ color: "#64BDF9", fontWeight: 600 }}>100%</span>
+            </div>
+            <div
+              className="h-1 rounded-full overflow-hidden"
+              style={{ backgroundColor: "#1B1E30" }}
+            >
+              <div
+                className="h-full rounded-full"
+                style={{
+                  width: "100%",
+                  background: "linear-gradient(90deg, #64BDF9, #C4FF47)",
+                }}
+              />
+            </div>
+            <p
+              className="text-xs mt-2"
+              style={{ color: "#3D4560" }}
+            >
+              100% Commitment to Excellence
+            </p>
+          </div>
         </div>
       </div>
+
+      {/* Bottom divider */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-px"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, #1B1E30, transparent)",
+        }}
+      />
     </section>
   );
 }
+
+export default Services;
